@@ -1,0 +1,16 @@
+// MARK: - Weekday
+
+/* Class = "UILabel"; text = "Sun"; ObjectID = "xUK-nw-VIk"; */
+"xUK-nw-VIk.text" = "日";
+/* Class = "UILabel"; text = "Mon"; ObjectID = "dc9-K2-MnE"; */
+"dc9-K2-MnE.text" = "月";
+/* Class = "UILabel"; text = "Mon"; ObjectID = "Dbp-T5-FOV"; */
+"Dbp-T5-FOV.text" = "火";
+/* Class = "UILabel"; text = "Mon"; ObjectID = "7IH-VT-z51"; */
+"7IH-VT-z51.text" = "水";
+/* Class = "UILabel"; text = "Mon"; ObjectID = "2F4-RS-IlC"; */
+"2F4-RS-IlC.text" = "木";
+/* Class = "UILabel"; text = "Mon"; ObjectID = "o1l-CX-jvQ"; */
+"o1l-CX-jvQ.text" = "金";
+/* Class = "UILabel"; text = "Mon"; ObjectID = "XSi-Jb-AJF"; */
+"XSi-Jb-AJF.text" = "土";

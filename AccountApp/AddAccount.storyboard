@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Account View Controller-->
+        <scene sceneID="3eE-ev-nGQ">
+            <objects>
+                <viewController storyboardIdentifier="AddAccountViewController" id="5oB-LQ-StE" customClass="AddAccountViewController" customModule="AccountApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AF0-fo-v8c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRK-CZ-U1n" customClass="TypeSwitchView" customModule="AccountApp" customModuleProvider="target">
+                                <rect key="frame" x="8" y="20" width="359" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="eB1-S3-hrJ"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tve-pt-k6j">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <connections>
+                                    <segue destination="2dz-6X-DXU" kind="embed" identifier="AddExpenseSegue" id="9D0-7U-dOh"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIG-5q-c9Q">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <connections>
+                                    <segue destination="rwb-ZM-sgE" kind="embed" identifier="AddIncomeSegue" id="VpU-c9-Qlk"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SRK-CZ-U1n" firstAttribute="leading" secondItem="LqG-vn-LrF" secondAttribute="leading" constant="8" id="1I5-M1-mxI"/>
+                            <constraint firstItem="eIG-5q-c9Q" firstAttribute="leading" secondItem="LqG-vn-LrF" secondAttribute="leading" id="4Ra-xo-sQ0"/>
+                            <constraint firstItem="eIG-5q-c9Q" firstAttribute="top" secondItem="SRK-CZ-U1n" secondAttribute="bottom" id="7wE-q2-CXc"/>
+                            <constraint firstItem="LqG-vn-LrF" firstAttribute="trailing" secondItem="SRK-CZ-U1n" secondAttribute="trailing" constant="8" id="Rg7-Dk-iP9"/>
+                            <constraint firstItem="LqG-vn-LrF" firstAttribute="trailing" secondItem="eIG-5q-c9Q" secondAttribute="trailing" id="TIh-81-0jX"/>
+                            <constraint firstItem="Tve-pt-k6j" firstAttribute="top" secondItem="SRK-CZ-U1n" secondAttribute="bottom" id="TZ6-fa-1Be"/>
+                            <constraint firstItem="SRK-CZ-U1n" firstAttribute="top" secondItem="LqG-vn-LrF" secondAttribute="top" id="Xdf-pp-6u4"/>
+                            <constraint firstItem="Tve-pt-k6j" firstAttribute="leading" secondItem="LqG-vn-LrF" secondAttribute="leading" id="bw7-HM-xuN"/>
+                            <constraint firstItem="LqG-vn-LrF" firstAttribute="bottom" secondItem="Tve-pt-k6j" secondAttribute="bottom" id="nk6-J1-cgl"/>
+                            <constraint firstItem="LqG-vn-LrF" firstAttribute="trailing" secondItem="Tve-pt-k6j" secondAttribute="trailing" id="rDZ-hi-UfG"/>
+                            <constraint firstItem="LqG-vn-LrF" firstAttribute="bottom" secondItem="eIG-5q-c9Q" secondAttribute="bottom" id="zV0-0F-k7M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LqG-vn-LrF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ItB-Pg-FXk"/>
+                    <connections>
+                        <outlet property="expensesView" destination="Tve-pt-k6j" id="jIk-Vu-aR1"/>
+                        <outlet property="incomeView" destination="eIG-5q-c9Q" id="Orr-8O-eUU"/>
+                        <outlet property="typeView" destination="SRK-CZ-U1n" id="7QT-ju-Vf3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axa-ar-mao" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="488.80000000000001" y="47.226386806596707"/>
+        </scene>
+        <!--Add Expenses View Controller-->
+        <scene sceneID="Rkj-lD-glr">
+            <objects>
+                <viewController id="2dz-6X-DXU" customClass="AddExpensesViewController" customModule="AccountApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o3K-Ez-slw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TC2-Jk-H3w"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nGK-jw-86T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="62"/>
+        </scene>
+        <!--Add Income View Controller-->
+        <scene sceneID="Ll9-Og-s9Y">
+            <objects>
+                <viewController id="rwb-ZM-sgE" customClass="AddIncomeViewController" customModule="AccountApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u6v-Gr-O4a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ffj-K9-nGC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bv9-Bi-zHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="489" y="786"/>
+        </scene>
+    </scenes>
+</document>

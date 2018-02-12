@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TypeSwitchView" customModule="AccountApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="7Ld-Uu-ljU"/>
+                <outlet property="currentView" destination="uoA-BU-mIE" id="pLi-ef-Woi"/>
+                <outlet property="expensesButton" destination="Zqb-HI-pwX" id="FUR-qQ-wqc"/>
+                <outlet property="incomeButton" destination="1hK-rq-tjY" id="JmO-v4-Qb2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zqb-HI-pwX">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="M9X-U5-ri8"/>
+                    </constraints>
+                    <state key="normal" title="Expenses">
+                        <color key="titleColor" red="0.066666666666666666" green="0.59607843137254901" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="switchToExpense:" destination="-1" eventType="touchUpInside" id="fm2-7P-Fv2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hK-rq-tjY">
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="Nc6-59-uTo"/>
+                    </constraints>
+                    <state key="normal" title="Income">
+                        <color key="titleColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="switchToIncome:" destination="-1" eventType="touchUpInside" id="Vhf-hI-sb3"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoA-BU-mIE">
+                    <rect key="frame" x="0.0" y="28" width="187.5" height="2"/>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="pcu-fi-4R9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uoA-BU-mIE" firstAttribute="width" secondItem="Zqb-HI-pwX" secondAttribute="width" id="2i8-4B-Rtw"/>
+                <constraint firstItem="1hK-rq-tjY" firstAttribute="leading" secondItem="Zqb-HI-pwX" secondAttribute="trailing" id="7N2-Re-hCJ"/>
+                <constraint firstItem="uoA-BU-mIE" firstAttribute="top" secondItem="1hK-rq-tjY" secondAttribute="bottom" id="8xl-GM-lgf"/>
+                <constraint firstItem="Zqb-HI-pwX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="K0D-s5-yKR"/>
+                <constraint firstItem="uoA-BU-mIE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KqD-gQ-7a9"/>
+                <constraint firstItem="uoA-BU-mIE" firstAttribute="top" secondItem="Zqb-HI-pwX" secondAttribute="bottom" id="Mml-iM-jIu"/>
+                <constraint firstItem="1hK-rq-tjY" firstAttribute="leading" secondItem="Zqb-HI-pwX" secondAttribute="trailing" id="Ps3-Ep-pjH"/>
+                <constraint firstItem="1hK-rq-tjY" firstAttribute="width" secondItem="Zqb-HI-pwX" secondAttribute="width" id="VM5-ZN-ZBJ"/>
+                <constraint firstItem="Zqb-HI-pwX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bo6-yd-2uJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1hK-rq-tjY" secondAttribute="trailing" id="gC3-PC-ehz"/>
+                <constraint firstItem="uoA-BU-mIE" firstAttribute="top" secondItem="Zqb-HI-pwX" secondAttribute="bottom" id="lFK-wu-ACw"/>
+                <constraint firstItem="1hK-rq-tjY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="n53-nX-kc1"/>
+                <constraint firstItem="uoA-BU-mIE" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ns1-m3-Yhk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-9" y="-253"/>
+        </view>
+    </objects>
+</document>

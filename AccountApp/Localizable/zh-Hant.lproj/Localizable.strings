@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  AccountApp
+
+  Created by william on 2017/12/15.
+  Copyright © 2017年 william. All rights reserved.
+*/
+
+// MARK: - Universal
+"Setting" = "設定";
+"Save" = "儲存";
+"Cancel" = "取消";
+"Today" = "今天";
+"PleaseEnter" = "請輸入";
+"PleaseChoose" = "請選擇";
+"Done" = "完成";
+"Ok" = "確定";
+"Please_enter_amount" = "請輸入正確地金額";
+"Please_choose_category" = "請選擇類別";
+"Other" = "其他";
+
+// MARK: - Account
+"Income" = "收入";
+"Expenses" = "支出";
+"Amount" = "金額";
+"Category" = "類別";
+"Account" = "帳戶";
+"Cash" = "現金";
+"Bank" = "銀行";
+"CreditCard" = "信用卡";
+"Description" = "描述";
+"AddDescription" = "新增描述";
+
+// MARK: - Expense Category
+"Breakfast" = "早餐";
+"Lunch" = "午餐";
+"Dinner" = "晚餐";
+"Drink" = "飲料";
+"Snacks" = "零食";
+"Traffic" = "交通";
+"Grocery" = "日常用品";
+"Entertainment" = "娛樂";
+"Clothes" = "服飾";
+"Social" = "交際應酬";
+"Bill" = "帳單";
+"Rent" = "房租";
+"Shopping" = "購物";
+"Gift" = "禮物";
+"Medical" = "醫療";
+"Insurance" = "保險";
+"Investment" = "投資";
+"Transfer" = "轉帳";
+"Utilities" = "水電瓦斯";
+
+// MARK: - Income Category
+"Salary" = "薪水";
+"Bonus" = "獎金";
+"Allowance" = "補助費";
+"Invest" = "投資";

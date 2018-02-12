@@ -1,0 +1,10 @@
+//
+//  Release.xcconfig
+//  AccountApp
+//
+//  Created by william on 2017/12/15.
+//  Copyright © 2017年 william. All rights reserved.
+//
+
+APP_DISPLAY_NAME = Release
+APP_VERSION = 0.1

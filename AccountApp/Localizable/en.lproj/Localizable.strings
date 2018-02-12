@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  AccountApp
+
+  Created by william on 2017/12/15.
+  Copyright © 2017年 william. All rights reserved.
+*/
+
+// MARK: - Universal
+"Setting" = "Setting";
+"Save" = "Save";
+"Cancel" = "Cancel";
+"Today" = "Today";
+"PleaseEnter" = "PleaseEnter";
+"PleaseChoose" = "PleaseChoose";
+"Done" = "Done";
+"Ok" = "Ok";
+"Other" = "Other";
+
+// MARK: - Account
+"Income" = "Income";
+"Expenses" = "Expenses";
+"Amount" = "Amount";
+"Category" = "Category";
+"Account" = "Account";
+"Cash" = "Cash";
+"Bank" = "Bank";
+"CreditCard" = "CreditCard";
+"Description" = "Description";
+"AddDescription" = "Add description";
+"Please_enter_amount" = "Please enter correct amount";
+"Please_choose_category" = "Please choose category";
+
+// MARK: - Expense Category
+"Breakfast" = "Breakfast";
+"Lunch" = "Lunch";
+"Dinner" = "Dinner";
+"Drink" = "Drink";
+"Snacks" = "Snacks";
+"Traffic" = "Traffic";
+"Grocery" = "Grocery";
+"Entertainment" = "Fun";
+"Clothes" = "Clothes";
+"Social" = "Social";
+"Bill" = "Bill";
+"Rent" = "Rent";
+"Shopping" = "Shopping";
+"Gift" = "Gift";
+"Medical" = "Medical";
+"Insurance" = "Insurance";
+"Investment" = "Investment";
+"Transfer" = "Transfer";
+"Utilities" = "Utilities";
+
+// MARK: - Income Category
+"Salary" = "Salary";
+"Bonus" = "Bonus";
+"Allowance" = "Allowance";
+"Invest" = "Invest";

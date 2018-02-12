@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  AccountApp
+
+  Created by william on 2017/12/15.
+  Copyright © 2017年 william. All rights reserved.
+*/
+
+// MARK: - Universal
+"Setting" = "設定";
+"Save" = "セーブ";
+"Cancel" = "キャンセル";
+"Today" = "今日";
+"PleaseEnter" = "入力してください";
+"PleaseChoose" = "選択してください";
+"Done" = "完了";
+"Ok" = "確定";
+"Other" = "その他";
+
+// MARK: - Account
+"Income" = "収入";
+"Expenses" = "支出";
+"Amount" = "金額";
+"Category" = "カテゴリ";
+"Account" = "アカウント";
+"Cash" = "現金";
+"Bank" = "銀行";
+"CreditCard" = "クレジットカード";
+"Description" = "説明";
+"AddDescription" = "説明を追加";
+"Please_enter_amount" = "正しい金額を入力してください";
+"Please_choose_category" = "カテゴリを選択してください";
+
+// MARK: - Expense Category
+"Breakfast" = "朝食";
+"Lunch" = "昼食";
+"Dinner" = "夕食";
+"Drink" = "飲物";
+"Snacks" = "おやつ";
+"Traffic" = "交通";
+"Grocery" = "日用品";
+"Entertainment" = "娯楽";
+"Clothes" = "服";
+"Social" = "接待";
+"Bill" = "請求書";
+"Rent" = "家賃";
+"Shopping" = "ショッピング";
+"Gift" = "プレゼント";
+"Medical" = "医療";
+"Insurance" = "保険";
+"Investment" = "投資";
+"Transfer" = "振り込む";
+"Utilities" = "水道光熱費";
+
+// MARK: - Income Category
+"Salary" = "給料";
+"Bonus" = "ボーナス";
+"Allowance" = "手当";
+"Invest" = "投資";
