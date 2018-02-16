@@ -217,6 +217,7 @@ extension AccountViewController: UITableViewDelegate {
             let expenseVC = AddExpensesViewController()
             let navigationVC = UINavigationController(rootViewController: expenseVC)
             expenseVC.account = accounts?.sorted(byKeyPath: "type")[indexPath.row]
+            expenseVC.accountDelegate = self
             present(navigationVC, animated: true, completion: nil)
         }
         if Category.Income().name.contains(cell.titleLabel.text!){

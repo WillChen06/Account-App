@@ -9,4 +9,5 @@ target 'AccountApp' do
   pod 'RealmSwift'
   pod 'JTAppleCalendar', '~> 7.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'Charts'
 end

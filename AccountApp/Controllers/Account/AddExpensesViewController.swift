@@ -92,6 +92,7 @@ class AddExpensesViewController: UIViewController {
     var calculator = Calculator()
     let pickerItems: [String] = [.cash, .bank, .creditCard]
     var delegate: AddAccountViewControllerDelegate?
+    var accountDelegate: AccountViewControllerDelegate?
     var account: Account?
     var scrollIsDone: Bool = false
     // MARK: - Life cycle
@@ -121,8 +122,10 @@ class AddExpensesViewController: UIViewController {
         view.addSubview(calculatorView)
         view.addSubview(accountTypeView)
         category = account?.category.value
+        accountType = account?.account ?? 0
+        detail = account?.detail ?? .addDescription
         amountButton.setTitle(account?.amount ?? "0", for: .normal)
-        pickerView.selectRow(account?.account ?? 0, inComponent: 0, animated: false)
+        pickerView.selectRow(accountType, inComponent: 0, animated: false)
         if #available(iOS 11.0, *) {
             amountButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 100.0)
             tableView.anchor(top: nil, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
@@ -285,9 +288,21 @@ class AddExpensesViewController: UIViewController {
     }
     
     @objc func update() {
-        account?.update {
-            
+        if amountButton.titleLabel?.text == "0" {
+            let inputAlert = UIAlertController(title: .enterAmount, message: nil, preferredStyle: .alert)
+            inputAlert.addAction(title: .ok, style: .default, handler: nil)
+            present(inputAlert, animated: true, completion: nil)
+        } else {
+            account?.update {
+                account?.amount = (amountButton.titleLabel?.text)!
+                account?.category.value = category
+                account?.account = accountType
+                account?.detail = detail
+                accountDelegate?.updateCalendarData()
+                dismiss(animated: true, completion: nil)
+            }
         }
+        
     }
     
     // MARK: - Navigation
@@ -373,7 +388,9 @@ extension AddExpensesViewController: UICollectionViewDataSource {
 extension AddExpensesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if !scrollIsDone && account?.category.value != nil {
-            collectionView.scrollToItem(at: IndexPath(row: (account?.category.value) ?? 0, section: 0), at: [], animated: false)
+            if (account?.category.value)! > 9 {
+                collectionView.contentOffset.x = collectionView.frame.width
+            }
             let pageNumber = round(collectionView.contentOffset.x / collectionView.frame.size.width)
             pageControl.currentPage = Int(pageNumber)
             scrollIsDone = true
@@ -382,7 +399,6 @@ extension AddExpensesViewController: UICollectionViewDelegate {
     
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("Called Scroll")
         let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         pageControl.currentPage = Int(pageNumber)
     }

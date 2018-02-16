@@ -18,7 +18,7 @@ class Calculator {
     fileprivate var isLastCharacterOperator = false
     fileprivate var isFirstValue = true
     
-     /// - returns: The display value of the calculator.
+    /// - returns: The display value of the calculator.
     public var displayValue: String {
         get {
             return !(display.isEmpty) ? display : "0"
@@ -48,7 +48,7 @@ class Calculator {
         guard input.isValidCharacter else {
             throw CalculatorError.invalidCharater
         }
- 
+        
         // FIXME: Fix input zero bug
         if input.isValidDigit || input.isDoubleZero {
             if isLastCharacterOperator && (input == "0" || input == "00") { return }
@@ -79,6 +79,7 @@ class Calculator {
         } else if input.isOkSign{
             NotificationCenter.default.post(name: .hideCalculator, object: nil)
         } else if input.isClear {
+            NotificationCenter.default.post(name: .changeToEqual, object: nil)
             if !(display.isEmpty) {
                 display.removeAll()
             } else {

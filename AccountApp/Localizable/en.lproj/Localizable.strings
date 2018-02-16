@@ -16,6 +16,10 @@
 "Done" = "Done";
 "Ok" = "Ok";
 "Other" = "Other";
+"Year" = "Year";
+"Month" = "Month";
+"Week" = "Week";
+"Day" = "Day";
 
 // MARK: - Account
 "Income" = "Income";
