@@ -20,6 +20,9 @@
 "Month" = "月";
 "Week" = "週";
 "Day" = "日";
+"Remind" = "注意";
+"Delete" = "削除";
+"DeleteAlert" = "このデータを削除してもよろしいでしょうか?";
 
 // MARK: - Account
 "Income" = "収入";

@@ -36,7 +36,6 @@ class ChartViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.delegate = self
-//        scrollView.backgroundColor = .softBlue
         scrollView.contentSize = CGSize(width: view.frame.size.width * 2, height: 0.0)
         scrollView.isPagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -89,7 +88,7 @@ class ChartViewController: UIViewController {
         super.viewWillAppear(animated)
         print("Call viewWillAppear")
         setupChartView(chartView: chartView, by: .day)
-        
+        setupIncomeChartView(chartView: incomeChartView, by: .day)
     }
     // MARK: - Setup
     private func setupViews() {
@@ -138,17 +137,44 @@ class ChartViewController: UIViewController {
         chartView.delegate = self
         chartView.entryLabelColor = .white
         chartView.entryLabelFont = UIFont.systemFont(ofSize: 12.0)
-        setDataCount(data)
+        setDataCount(data, isExpense: true)
         chartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
     }
     
-    func setDataCount(_ data: Results<Account>?) {
+    private func setupIncomeChartView(chartView: PieChartView, by type: Internal) {
+        if accounts == nil { return }
+        let data: Results<Account>?
+        switch type {
+        case .day:
+            data = accounts?.filter("type == %@ && date == %@", "Income", Date().startOfDay!)
+        case .week:
+            data = accounts?.filter("type == %@ && (date >= %@ && date <= %@)", "Income", Date().startOfWeek!, Date().endOfWeek!)
+        case .month:
+            data = accounts?.filter("type == %@ && (date >= %@ && date <= %@)", "Income", Date().startOfMonth!, Date().endOfMonth!)
+        case .year:
+            data = accounts?.filter("type == %@ && (date >= %@ && date <= %@)", "Income", Date().startOfYear!, Date().endOfYear!)
+        }
+        setup(pieChartView: incomeChartView)
+        chartView.delegate = self
+        chartView.entryLabelColor = .white
+        chartView.entryLabelFont = UIFont.systemFont(ofSize: 12.0)
+        setDataCount(data, isExpense: false)
+        chartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
+    }
+    
+    func setDataCount(_ data: Results<Account>?, isExpense: Bool) {
         
         let entries = (0..<(data?.count)!).map { (i) -> PieChartDataEntry in
             // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.
-            return PieChartDataEntry(value: Double(data![i].amount)!,
-                                     label: Category.Expense().name[data![i].category.value!],
-                                     icon: nil)
+            if isExpense {
+                return PieChartDataEntry(value: Double(data![i].amount)!,
+                                         label: Category.Expense().name[data![i].category.value!],
+                                         icon: nil)
+            } else {
+                return PieChartDataEntry(value: Double(data![i].amount)!,
+                                         label: Category.Income().name[data![i].category.value!],
+                                         icon: nil)
+            }
         }
         let set = PieChartDataSet(values: entries, label: "Election Results")
         set.drawIconsEnabled = false
@@ -171,9 +197,14 @@ class ChartViewController: UIViewController {
         
         data.setValueFont(.systemFont(ofSize: 11, weight: .light))
         data.setValueTextColor(.black)
-        
-        chartView.data = data
-        chartView.highlightValues(nil)
+        if isExpense {
+            chartView.data = data
+            chartView.highlightValues(nil)
+        } else {
+            incomeChartView.data = data
+            incomeChartView.highlightValues(nil)
+        }
+       
     }
     func setup(pieChartView chartView: PieChartView) {
         chartView.usePercentValuesEnabled = true

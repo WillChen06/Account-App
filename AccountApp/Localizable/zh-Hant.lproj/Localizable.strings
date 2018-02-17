@@ -22,6 +22,9 @@
 "Month" = "月";
 "Week" = "週";
 "Day" = "日";
+"Remind" = "提醒";
+"Delete" = "刪除";
+"DeleteAlert" = "確定要刪除此筆資料?";
 
 // MARK: - Account
 "Income" = "收入";

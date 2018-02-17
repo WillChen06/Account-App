@@ -20,6 +20,9 @@
 "Month" = "Month";
 "Week" = "Week";
 "Day" = "Day";
+"Remind" = "Remind";
+"Delete" = "Delete";
+"DeleteAlert" = "Are you sure want to delete the data?";
 
 // MARK: - Account
 "Income" = "Income";

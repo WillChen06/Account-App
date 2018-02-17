@@ -82,6 +82,18 @@ class AddExpensesViewController: UIViewController {
         return calculatorView
     }()
     
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(.delete, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .red
+        button.addTarget(self, action: #selector(deleteData), for: .touchUpInside)
+        button.isHidden = newMode
+        return button
+    }()
+    
     var pickerView: UIPickerView!
     var isShowCalculatorView: Bool = false
     var isSelectedCategory: Bool = false
@@ -91,10 +103,11 @@ class AddExpensesViewController: UIViewController {
     var detail: String?
     var calculator = Calculator()
     let pickerItems: [String] = [.cash, .bank, .creditCard]
-    var delegate: AddAccountViewControllerDelegate?
-    var accountDelegate: AccountViewControllerDelegate?
+//    var delegate: AddAccountViewControllerDelegate?
+    var delegate: AccountViewControllerDelegate?
     var account: Account?
     var scrollIsDone: Bool = false
+    var newMode: Bool = true
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +132,7 @@ class AddExpensesViewController: UIViewController {
         view.addSubview(categoryCollectionView)
         view.addSubview(pageControl)
         view.addSubview(tableView)
+        view.addSubview(deleteButton)
         view.addSubview(calculatorView)
         view.addSubview(accountTypeView)
         category = account?.category.value
@@ -128,17 +142,21 @@ class AddExpensesViewController: UIViewController {
         pickerView.selectRow(accountType, inComponent: 0, animated: false)
         if #available(iOS 11.0, *) {
             amountButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 100.0)
-            tableView.anchor(top: nil, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+            tableView.anchor(top: nil, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
             
         } else {
             amountButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 100.0)
-            tableView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+            tableView.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         }
         categoryCollectionView.anchor(top: amountButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
-        
         categoryCollectionView.heightAnchor.constraint(equalTo: tableView.heightAnchor, multiplier: 0.5).isActive = true
         pageControl.anchor(top: categoryCollectionView.bottomAnchor, left: nil, bottom: tableView.topAnchor, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 39.0, heightConstant: 37.0)
         pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        deleteButton.anchor(top: tableView.bottomAnchor, left: nil, bottom: view.bottomAnchor, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 8.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 30.0)
+        
+        deleteButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     private func setupGesture() {
@@ -298,11 +316,21 @@ class AddExpensesViewController: UIViewController {
                 account?.category.value = category
                 account?.account = accountType
                 account?.detail = detail
-                accountDelegate?.updateCalendarData()
+                delegate?.updateCalendarData()
                 dismiss(animated: true, completion: nil)
             }
         }
-        
+    }
+    
+    @objc func deleteData() {
+        let deleteAlert = UIAlertController(title: .remind, message: .deleteAlert, preferredStyle: .alert)
+        deleteAlert.addAction(title: .ok, style: .default) { (action) in
+            self.account?.delete()
+            self.delegate?.updateCalendarData()
+            self.dismiss(animated: true, completion: nil)
+        }
+        deleteAlert.addAction(title: .cancel, style: .cancel, handler: nil)
+        present(deleteAlert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation

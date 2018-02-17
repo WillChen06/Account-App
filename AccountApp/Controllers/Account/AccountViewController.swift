@@ -59,7 +59,6 @@ class AccountViewController: UIViewController {
         calendarView.scrollToDate(selectedDate)
         calendarView.selectDates([selectedDate])
         
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -217,13 +216,16 @@ extension AccountViewController: UITableViewDelegate {
             let expenseVC = AddExpensesViewController()
             let navigationVC = UINavigationController(rootViewController: expenseVC)
             expenseVC.account = accounts?.sorted(byKeyPath: "type")[indexPath.row]
-            expenseVC.accountDelegate = self
+            expenseVC.delegate = self
+            expenseVC.newMode = false
             present(navigationVC, animated: true, completion: nil)
         }
         if Category.Income().name.contains(cell.titleLabel.text!){
             let incomeVC = AddIncomeViewController()
             let navigationVC = UINavigationController(rootViewController: incomeVC)
             incomeVC.account = accounts?.sorted(byKeyPath: "type")[indexPath.row]
+            incomeVC.delegate = self
+            incomeVC.newMode = false
             present(navigationVC, animated: true, completion: nil)
         }
     }

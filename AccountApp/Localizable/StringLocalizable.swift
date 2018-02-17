@@ -23,6 +23,9 @@ extension String {
     static let month = NSLocalizedString("Month", comment: "")
     static let week = NSLocalizedString("Week", comment: "")
     static let day = NSLocalizedString("Day", comment: "")
+    static let remind = NSLocalizedString("Remind", comment: "")
+    static let delete = NSLocalizedString("Delete", comment: "")
+    static let deleteAlert = NSLocalizedString("DeleteAlert", comment: "");
 }
 
 // MARK: - Account
