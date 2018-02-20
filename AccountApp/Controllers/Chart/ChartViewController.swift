@@ -90,7 +90,7 @@ class ChartViewController: UIViewController {
     var accounts: Results<Account>? = {
         return RealmHelper.objects(Account.self)
     }()
-    
+    var total = 0
     
     // MARK: - Life Cycle
     
@@ -129,12 +129,12 @@ class ChartViewController: UIViewController {
         }
         
         displayDateLabel.anchor(top: internalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
-        chartScrollView.anchor(top: displayDateLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
-        chartView.anchor(top: chartScrollView.topAnchor, left: chartScrollView.leftAnchor, bottom: nil, right: nil, topConstant: 8.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+        chartScrollView.anchor(top: displayDateLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+        chartView.anchor(top: chartScrollView.topAnchor, left: chartScrollView.leftAnchor, bottom: nil, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         chartView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         chartView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         incomeChartView.frame.origin.x = view.frame.size.width
-        incomeChartView.anchor(top: chartScrollView.topAnchor, left: chartView.rightAnchor, bottom: nil, right: nil, topConstant: 8.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+        incomeChartView.anchor(top: chartScrollView.topAnchor, left: chartView.rightAnchor, bottom: nil, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         incomeChartView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         incomeChartView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         
@@ -211,6 +211,19 @@ class ChartViewController: UIViewController {
         let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.alignment = .center
+        let centerText: NSMutableAttributedString
+        if showExpense {
+            centerText = NSMutableAttributedString(string: .expenses + "\n" + String(describing: total))
+        } else {
+            centerText = NSMutableAttributedString(string: .income + "\n" + String(describing: total))
+        }
+        centerText.setAttributes([.font : UIFont.systemFont(ofSize: 17.0),
+                                  .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
+//        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
+//                                  .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
+//        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
+//                                  .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
+        chartView.centerAttributedText = centerText;
         
         chartView.drawHoleEnabled = true
         chartView.rotationAngle = 270
@@ -333,6 +346,9 @@ class ChartViewController: UIViewController {
                 break
             }
         }
+        total = chartDictionary.reduce(0, { (result, dict) -> Int in
+            return result + dict.value
+        })
         return chartDictionary
     }
     
@@ -359,11 +375,13 @@ extension ChartViewController: UIScrollViewDelegate {
         let position = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         if Int(position) == 0 && !showExpense {
             DispatchQueue.main.async {
+                self.navigationItem.title = .expenses
                 self.setupChartView(chartView: self.chartView, by: self.currentType)
             }
             showExpense = true
         } else if Int(position) == 1 && showExpense {
             DispatchQueue.main.async {
+                self.navigationItem.title = .income
                 self.setupIncomeChartView(chartView: self.incomeChartView, by: self.currentType)
             }
             showExpense = false
