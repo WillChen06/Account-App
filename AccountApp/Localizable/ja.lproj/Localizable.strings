@@ -16,6 +16,13 @@
 "Done" = "完了";
 "Ok" = "確定";
 "Other" = "その他";
+"Year" = "年";
+"Month" = "月";
+"Week" = "週";
+"Day" = "日";
+"Remind" = "注意";
+"Delete" = "削除";
+"DeleteAlert" = "このデータを削除してもよろしいでしょうか?";
 
 // MARK: - Account
 "Income" = "収入";

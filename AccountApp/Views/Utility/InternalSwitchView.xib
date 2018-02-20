@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InternalSwitchView" customModule="AccountApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="Ge0-86-iXu"/>
+                <outlet property="currentView" destination="efx-Sz-BMd" id="95F-oG-xPa"/>
+                <outlet property="dayButton" destination="3rz-tt-K4j" id="Sfi-c6-aa9"/>
+                <outlet property="monthButton" destination="apG-Ux-be1" id="6ch-hC-mYj"/>
+                <outlet property="weekButton" destination="eDw-AE-nig" id="FDt-Rh-dKD"/>
+                <outlet property="yearButton" destination="5da-rk-PsD" id="oEg-bz-n9n"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3rz-tt-K4j">
+                    <rect key="frame" x="0.0" y="0.0" width="94" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="o9Y-bv-ZE9"/>
+                    </constraints>
+                    <state key="normal" title="Day">
+                        <color key="titleColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDw-AE-nig">
+                    <rect key="frame" x="94" y="0.0" width="93.5" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="Map-oj-4jW"/>
+                    </constraints>
+                    <state key="normal" title="Week">
+                        <color key="titleColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apG-Ux-be1">
+                    <rect key="frame" x="187.5" y="0.0" width="94" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="WV1-Kg-3Ob"/>
+                    </constraints>
+                    <state key="normal" title="Month">
+                        <color key="titleColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5da-rk-PsD">
+                    <rect key="frame" x="281" y="0.0" width="93.5" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="OBw-iQ-a9T"/>
+                    </constraints>
+                    <state key="normal" title="Year">
+                        <color key="titleColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efx-Sz-BMd">
+                    <rect key="frame" x="0.0" y="28" width="94" height="2"/>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.59607843140000005" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="SCA-Rn-hr6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eDw-AE-nig" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="1I6-gR-5cU"/>
+                <constraint firstItem="3rz-tt-K4j" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4Zq-fQ-8he"/>
+                <constraint firstItem="3rz-tt-K4j" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="7JA-3R-i1w"/>
+                <constraint firstItem="apG-Ux-be1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Aen-oo-BnU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5da-rk-PsD" secondAttribute="trailing" id="B2w-jQ-fHe"/>
+                <constraint firstItem="5da-rk-PsD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CqC-RF-d1g"/>
+                <constraint firstItem="efx-Sz-BMd" firstAttribute="top" secondItem="3rz-tt-K4j" secondAttribute="bottom" id="Dpa-xu-SjR"/>
+                <constraint firstItem="eDw-AE-nig" firstAttribute="width" secondItem="3rz-tt-K4j" secondAttribute="width" id="Se1-PF-SUW"/>
+                <constraint firstItem="apG-Ux-be1" firstAttribute="width" secondItem="3rz-tt-K4j" secondAttribute="width" id="Tuj-Jy-ndf"/>
+                <constraint firstItem="5da-rk-PsD" firstAttribute="leading" secondItem="apG-Ux-be1" secondAttribute="trailing" id="c1m-Vd-CQy"/>
+                <constraint firstItem="5da-rk-PsD" firstAttribute="width" secondItem="3rz-tt-K4j" secondAttribute="width" id="f5J-AV-VgW"/>
+                <constraint firstItem="efx-Sz-BMd" firstAttribute="width" secondItem="3rz-tt-K4j" secondAttribute="width" id="kie-E4-OjP"/>
+                <constraint firstItem="efx-Sz-BMd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qSk-wp-Z2P"/>
+                <constraint firstItem="eDw-AE-nig" firstAttribute="leading" secondItem="3rz-tt-K4j" secondAttribute="trailing" id="um4-HX-S7Y"/>
+                <constraint firstItem="apG-Ux-be1" firstAttribute="leading" secondItem="eDw-AE-nig" secondAttribute="trailing" id="vI5-8m-xnM"/>
+                <constraint firstItem="efx-Sz-BMd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ypf-uv-Kpu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="-133"/>
+        </view>
+    </objects>
+</document>

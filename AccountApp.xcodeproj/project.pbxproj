@@ -31,6 +31,7 @@
 		DC98BD5A32EE8DA09F227813 /* Pods_AccountApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E93DA5484B8C6BD618AFD81 /* Pods_AccountApp.framework */; };
 		F900EB91200C9A9600A7A126 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F900EB90200C9A9600A7A126 /* Calculator.swift */; };
 		F90202142026FCF5000F88A0 /* AccountDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */; };
+		F9070B452039569D00E04A87 /* ChartListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9070B442039569D00E04A87 /* ChartListCell.swift */; };
 		F908D83B201474D4005DD8A4 /* Realm+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D83A201474D4005DD8A4 /* Realm+Helper.swift */; };
 		F908D83D20147A99005DD8A4 /* UIAlertController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D83C20147A99005DD8A4 /* UIAlertController+Helper.swift */; };
 		F90DAC49202EE3A60018E4E8 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90DAC48202EE3A60018E4E8 /* ExpenseCell.swift */; };
@@ -39,6 +40,10 @@
 		F96B40362031EDAC0090D308 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96B40352031EDAC0090D308 /* ChartViewController.swift */; };
 		F9AF4E932031EFDA00DA437D /* TypeSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */; };
 		F9AF4E952031EFE900DA437D /* TypeSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */; };
+		F9AF4E9B2032AC0B00DA437D /* InternalSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E9A2032AC0B00DA437D /* InternalSwitchView.swift */; };
+		F9AF4E9D2032AC1200DA437D /* InternalSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AF4E9C2032AC1100DA437D /* InternalSwitchView.xib */; };
+		F9AF4EA020356E7900DA437D /* Date+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E9F20356E7900DA437D /* Date+Helper.swift */; };
+		F9AF4EA220356EAB00DA437D /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4EA120356EAB00DA437D /* String+Helper.swift */; };
 		F9F98F3C20218D4A009FBC95 /* AddAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9F98F3B20218D4A009FBC95 /* AddAccount.storyboard */; };
 		F9F98F3E20218EE7009FBC95 /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F98F3D20218EE7009FBC95 /* AddIncomeViewController.swift */; };
 		F9F98F4020218EFC009FBC95 /* AddExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F98F3F20218EFC009FBC95 /* AddExpensesViewController.swift */; };
@@ -83,6 +88,7 @@
 		9E93DA5484B8C6BD618AFD81 /* Pods_AccountApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F900EB90200C9A9600A7A126 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayCell.swift; sourceTree = "<group>"; };
+		F9070B442039569D00E04A87 /* ChartListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListCell.swift; sourceTree = "<group>"; };
 		F908D83A201474D4005DD8A4 /* Realm+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Helper.swift"; sourceTree = "<group>"; };
 		F908D83C20147A99005DD8A4 /* UIAlertController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Helper.swift"; sourceTree = "<group>"; };
 		F90DAC48202EE3A60018E4E8 /* ExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
@@ -91,6 +97,10 @@
 		F96B40352031EDAC0090D308 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSwitchView.swift; sourceTree = "<group>"; };
 		F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSwitchView.xib; sourceTree = "<group>"; };
+		F9AF4E9A2032AC0B00DA437D /* InternalSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalSwitchView.swift; sourceTree = "<group>"; };
+		F9AF4E9C2032AC1100DA437D /* InternalSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InternalSwitchView.xib; sourceTree = "<group>"; };
+		F9AF4E9F20356E7900DA437D /* Date+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helper.swift"; sourceTree = "<group>"; };
+		F9AF4EA120356EAB00DA437D /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
 		F9F98F3B20218D4A009FBC95 /* AddAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAccount.storyboard; sourceTree = "<group>"; };
 		F9F98F3D20218EE7009FBC95 /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
 		F9F98F3F20218EFC009FBC95 /* AddExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensesViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +210,8 @@
 				865947751FEB504B00B3D868 /* CalculatorView.xib */,
 				F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */,
 				F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */,
+				F9AF4E9A2032AC0B00DA437D /* InternalSwitchView.swift */,
+				F9AF4E9C2032AC1100DA437D /* InternalSwitchView.xib */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -215,6 +227,8 @@
 				8674E5FF1FE63799005B643D /* UINavigationBar+Helper.swift */,
 				8674E5F41FE617EA005B643D /* UIView+Helper.swift */,
 				86F6DFF31FEA0F78005A4299 /* Utility_Extension.swift */,
+				F9AF4E9F20356E7900DA437D /* Date+Helper.swift */,
+				F9AF4EA120356EAB00DA437D /* String+Helper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -231,6 +245,7 @@
 		8674E5F91FE63604005B643D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F9070B412039565F00E04A87 /* Chart */,
 				F90202122026FCE2000F88A0 /* Account */,
 				8659476C1FEB4ED000B3D868 /* Utility */,
 				865947691FEA661800B3D868 /* Calendar */,
@@ -286,6 +301,14 @@
 				F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		F9070B412039565F00E04A87 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				F9070B442039569D00E04A87 /* ChartListCell.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		F96B403020317EA30090D308 /* List */ = {
@@ -369,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F98F3C20218D4A009FBC95 /* AddAccount.storyboard in Resources */,
+				F9AF4E9D2032AC1200DA437D /* InternalSwitchView.xib in Resources */,
 				3D1481421FE3A8E300344ADF /* LaunchScreen.storyboard in Resources */,
 				3D92A99B1FE3B0F8008D4EEF /* Localizable.strings in Resources */,
 				865947761FEB504B00B3D868 /* CalculatorView.xib in Resources */,
@@ -388,6 +412,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AccountApp/Pods-AccountApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -395,6 +420,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -464,12 +490,16 @@
 				8674E5F71FE62313005B643D /* UIColor+Helper.swift in Sources */,
 				865947741FEB503E00B3D868 /* CalculatorView.swift in Sources */,
 				8674E6041FE63ABD005B643D /* SettingViewController.swift in Sources */,
+				F9AF4E9B2032AC0B00DA437D /* InternalSwitchView.swift in Sources */,
 				8674E6061FE6442F005B643D /* StringLocalizable.swift in Sources */,
 				F9F98F3E20218EE7009FBC95 /* AddIncomeViewController.swift in Sources */,
+				F9AF4EA220356EAB00DA437D /* String+Helper.swift in Sources */,
 				8633EEE81FECE02600B8E48C /* SelectAccountTypeCell.swift in Sources */,
+				F9AF4EA020356E7900DA437D /* Date+Helper.swift in Sources */,
 				501E86751FFCB8150089ACD4 /* AddDescriptionViewController.swift in Sources */,
 				F9F98F422022F8F4009FBC95 /* Notification+Helper.swift in Sources */,
 				F90202142026FCF5000F88A0 /* AccountDisplayCell.swift in Sources */,
+				F9070B452039569D00E04A87 /* ChartListCell.swift in Sources */,
 				F90DAC4B202EE3E40018E4E8 /* IncomeCell.swift in Sources */,
 				F96B40342031EDA20090D308 /* ListViewController.swift in Sources */,
 				F9F98F4020218EFC009FBC95 /* AddExpensesViewController.swift in Sources */,

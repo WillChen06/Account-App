@@ -68,6 +68,18 @@ class AddIncomeViewController: UIViewController {
         return calculatorView
     }()
     
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(.delete, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .red
+        button.addTarget(self, action: #selector(deleteData), for: .touchUpInside)
+        button.isHidden = newMode
+        return button
+    }()
+    
     var pickerView: UIPickerView!
     var isShowCalculatorView: Bool = false
     var isSelectedCategory: Bool = false
@@ -78,14 +90,15 @@ class AddIncomeViewController: UIViewController {
     let pickerItems: [String] = [.cash, .bank, .creditCard]
     var calculator = Calculator()
     var account: Account?
-    
+    var delegate: AccountViewControllerDelegate?
+    var newMode: Bool = true
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupGesture()
         setupNavigation()
-        NotificationCenter.default.addObserver(self, selector: #selector(save), name: .saveIncome, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(saveIncome), name: .saveIncome, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(clearData), name: .clearIncome, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideCalculator), name: .hideCalculator, object: nil)
         // Do any additional setup after loading the view.
@@ -102,6 +115,7 @@ class AddIncomeViewController: UIViewController {
         view.addSubview(amountButton)
         view.addSubview(categoryCollectionView)
         view.addSubview(tableView)
+        view.addSubview(deleteButton)
         view.addSubview(calculatorView)
         view.addSubview(accountTypeView)
         category = account?.category.value
@@ -109,13 +123,17 @@ class AddIncomeViewController: UIViewController {
         pickerView.selectRow(account?.account ?? 0, inComponent: 0, animated: false)
         if #available(iOS 11.0, *) {
             amountButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 100.0)
-            tableView.anchor(top: categoryCollectionView.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+            tableView.anchor(top: categoryCollectionView.bottomAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         } else {
             amountButton.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 100.0)
-            tableView.anchor(top: categoryCollectionView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
+            tableView.anchor(top: categoryCollectionView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         }
         categoryCollectionView.anchor(top: amountButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         categoryCollectionView.heightAnchor.constraint(equalTo: tableView.heightAnchor, multiplier: 1 / 3).isActive = true
+        deleteButton.anchor(top: tableView.bottomAnchor, left: nil, bottom: view.bottomAnchor, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 8.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 30.0)
+        
+        deleteButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        deleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     private func setupGesture() {
@@ -134,7 +152,7 @@ class AddIncomeViewController: UIViewController {
             UIBarButtonItem(title: .cancel, style: .plain, target: self, action: #selector(dismissController))
         ]
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(title: .save, style: .plain, target: self, action: #selector(save))
+            UIBarButtonItem(title: .save, style: .plain, target: self, action: #selector(update))
         ]
     }
     
@@ -175,7 +193,9 @@ class AddIncomeViewController: UIViewController {
     }
     
     @objc func hidePickerView() {
-        
+        UIView.animate(withDuration: 0.5) {
+            self.accountTypeView.frame = CGRect(x: 0.0, y: self.view.frame.size.height, width: self.view.frame.size.width, height: 217.0 + 44.0)
+        }
     }
     
     @objc func dismissController() {
@@ -195,7 +215,7 @@ class AddIncomeViewController: UIViewController {
         present(navigationVC, animated: true, completion: nil)
     }
     
-    @objc func save() {
+    @objc func saveIncome() {
         if checkInputData() {
             let account = Account()
             account.type = "Income"
@@ -253,6 +273,35 @@ class AddIncomeViewController: UIViewController {
     @objc func swipe(_ gesture: UISwipeGestureRecognizer) {
         hideCalculatorView()
     }
+    
+    @objc func update() {
+        if amountButton.titleLabel?.text == "0" {
+            let inputAlert = UIAlertController(title: .enterAmount, message: nil, preferredStyle: .alert)
+            inputAlert.addAction(title: .ok, style: .default, handler: nil)
+            present(inputAlert, animated: true, completion: nil)
+        } else {
+            account?.update {
+                account?.amount = (amountButton.titleLabel?.text)!
+                account?.category.value = category
+                account?.account = accountType
+                account?.detail = detail
+                delegate?.updateCalendarData()
+                dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @objc func deleteData() {
+        let deleteAlert = UIAlertController(title: .remind, message: .deleteAlert, preferredStyle: .alert)
+        deleteAlert.addAction(title: .ok, style: .default) { (action) in
+            self.account?.delete()
+            self.delegate?.updateCalendarData()
+            self.dismiss(animated: true, completion: nil)
+        }
+        deleteAlert.addAction(title: .cancel, style: .cancel, handler: nil)
+        present(deleteAlert, animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

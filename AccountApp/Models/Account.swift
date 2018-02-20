@@ -24,4 +24,6 @@ class Account: Object {
     var category = RealmOptional<Int>()
     @objc dynamic var account = 0
     @objc dynamic var detail: String? = nil
+
+    
 }

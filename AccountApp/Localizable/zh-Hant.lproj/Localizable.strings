@@ -18,6 +18,13 @@
 "Please_enter_amount" = "請輸入正確地金額";
 "Please_choose_category" = "請選擇類別";
 "Other" = "其他";
+"Year" = "年";
+"Month" = "月";
+"Week" = "週";
+"Day" = "日";
+"Remind" = "提醒";
+"Delete" = "刪除";
+"DeleteAlert" = "確定要刪除此筆資料?";
 
 // MARK: - Account
 "Income" = "收入";

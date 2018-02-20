@@ -19,6 +19,13 @@ extension String {
     static let done = NSLocalizedString("Done", comment: "")
     static let ok = NSLocalizedString("Ok", comment: "")
     static let other = NSLocalizedString("Other", comment: "")
+    static let year = NSLocalizedString("Year", comment: "")
+    static let month = NSLocalizedString("Month", comment: "")
+    static let week = NSLocalizedString("Week", comment: "")
+    static let day = NSLocalizedString("Day", comment: "")
+    static let remind = NSLocalizedString("Remind", comment: "")
+    static let delete = NSLocalizedString("Delete", comment: "")
+    static let deleteAlert = NSLocalizedString("DeleteAlert", comment: "");
 }
 
 // MARK: - Account

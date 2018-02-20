@@ -24,7 +24,7 @@ class TypeSwitchView: UIView {
         commonInit()
     }
 
-    private func commonInit() {
+    fileprivate func commonInit() {
         Bundle.main.loadNibNamed("TypeSwitchView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
