@@ -26,6 +26,7 @@ extension String {
     static let remind = NSLocalizedString("Remind", comment: "")
     static let delete = NSLocalizedString("Delete", comment: "")
     static let deleteAlert = NSLocalizedString("DeleteAlert", comment: "");
+    static let total = NSLocalizedString("Total", comment: "")
 }
 
 // MARK: - Account

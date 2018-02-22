@@ -23,6 +23,7 @@
 "Remind" = "Remind";
 "Delete" = "Delete";
 "DeleteAlert" = "Are you sure want to delete the data?";
+"Total" = "Total";
 
 // MARK: - Account
 "Income" = "Income";

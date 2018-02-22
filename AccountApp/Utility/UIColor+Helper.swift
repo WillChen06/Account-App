@@ -27,5 +27,13 @@ extension UIColor {
     class var selectedOrange: UIColor {
         return UIColor(red: 245.0 / 255.0, green: 166.0 / 255.0, blue: 35.0 / 255.0, alpha: 1.0)
     }
-    
+    class var listDisplayBlue: UIColor {
+        return UIColor(red: 17.0 / 255.0, green: 152.0 / 255.0, blue: 213.0 / 255.0, alpha: 1.0)
+    }
+    class var listTitleGray: UIColor {
+        return UIColor(red: 210.0 / 255.0, green: 225.0 / 255.0, blue: 227.0 / 255.0, alpha: 1.0)
+    }
+    class var listSeparateBlue: UIColor {
+        return UIColor(red: 1.0 / 255.0, green: 127.0 / 255.0, blue: 196.0 / 255.0, alpha: 1.0)
+    }
 }

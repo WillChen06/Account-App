@@ -23,6 +23,7 @@
 "Remind" = "注意";
 "Delete" = "削除";
 "DeleteAlert" = "このデータを削除してもよろしいでしょうか?";
+"Total" = "合計";
 
 // MARK: - Account
 "Income" = "収入";

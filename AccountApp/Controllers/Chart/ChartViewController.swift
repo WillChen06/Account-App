@@ -14,8 +14,8 @@ class ChartViewController: UIViewController {
 
     // MARK: - Properties
     
-    lazy var internalSwitchView: InternalSwitchView = {
-        let switchView = InternalSwitchView()
+    lazy var intervalSwitchView: IntervalSwitchView = {
+        let switchView = IntervalSwitchView()
         switchView.translatesAutoresizingMaskIntoConstraints = false
         switchView.yearButton.addTarget(self, action: #selector(switchToYear), for: .touchUpInside)
         switchView.monthButton.addTarget(self, action: #selector(switchToMonth), for: .touchUpInside)
@@ -67,15 +67,8 @@ class ChartViewController: UIViewController {
         tableView.register(ChartListCell.self, forCellReuseIdentifier: String(describing: ChartListCell.self))
         return tableView
     }()
-    
-    enum Interval {
-        case year
-        case month
-        case week
-        case day
-    }
-    
-    var switchTag = 0
+        
+//    var switchTag = 0
     var currentType: Interval = .day
     var showExpense: Bool = true
     var chartDictionary: [String : Int] = [:]
@@ -115,7 +108,7 @@ class ChartViewController: UIViewController {
     }
     // MARK: - Setup
     private func setupViews() {
-        view.addSubview(internalSwitchView)
+        view.addSubview(intervalSwitchView)
         view.addSubview(displayDateLabel)
         view.addSubview(chartScrollView)
         view.addSubview(listTableView)
@@ -123,12 +116,12 @@ class ChartViewController: UIViewController {
         chartScrollView.addSubview(incomeChartView)
         displayDateLabel.text = getDateOfInterval(.day)
         if #available(iOS 11, *) {
-            internalSwitchView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
+            intervalSwitchView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         } else {
-           internalSwitchView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
+           intervalSwitchView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         }
         
-        displayDateLabel.anchor(top: internalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
+        displayDateLabel.anchor(top: intervalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         chartScrollView.anchor(top: displayDateLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         chartView.anchor(top: chartScrollView.topAnchor, left: chartScrollView.leftAnchor, bottom: nil, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         chartView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
@@ -153,7 +146,7 @@ class ChartViewController: UIViewController {
         chartView.entryLabelColor = .white
         chartView.entryLabelFont = UIFont.systemFont(ofSize: 12.0)
         setDataCount(data, isExpense: true)
-        chartView.animate(xAxisDuration: 1.3, easingOption: .easeOutBack)
+        chartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         listTableView.reloadData()
     }
     
@@ -164,7 +157,7 @@ class ChartViewController: UIViewController {
         chartView.entryLabelColor = .white
         chartView.entryLabelFont = UIFont.systemFont(ofSize: 12.0)
         setDataCount(data, isExpense: false)
-        chartView.animate(xAxisDuration: 1.3, easingOption: .easeOutBack)
+        chartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
         listTableView.reloadData()
     }
     
@@ -234,11 +227,10 @@ class ChartViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func switchToYear() {
-        if switchTag != 0 {
+        if currentType != .year {
             UIView.animate(withDuration: 0.3, animations: {
-                self.switchTag = 0
                 self.currentType = .year
-                self.internalSwitchView.currentView.frame.origin.x = self.internalSwitchView.yearButton.frame.origin.x
+                self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.yearButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.year)
                 if self.showExpense {
                     self.setupChartView(chartView: self.chartView, by: .year)
@@ -250,11 +242,10 @@ class ChartViewController: UIViewController {
     }
 
     @objc private func switchToMonth() {
-        if switchTag != 1 {
+        if currentType != .month {
             UIView.animate(withDuration: 0.3, animations: {
-                self.switchTag = 1
                 self.currentType = .month
-                self.internalSwitchView.currentView.frame.origin.x = self.internalSwitchView.monthButton.frame.origin.x
+                self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.monthButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.month)
                 if self.showExpense {
                     self.setupChartView(chartView: self.chartView, by: .month)
@@ -266,11 +257,10 @@ class ChartViewController: UIViewController {
     }
     
     @objc private func switchToWeek() {
-        if switchTag != 2 {
+        if currentType != .week {
             UIView.animate(withDuration: 0.3, animations: {
-                self.switchTag = 2
                 self.currentType = .week
-                self.internalSwitchView.currentView.frame.origin.x = self.internalSwitchView.weekButton.frame.origin.x
+                self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.weekButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.week)
                 if self.showExpense {
                     self.setupChartView(chartView: self.chartView, by: .week)
@@ -282,11 +272,10 @@ class ChartViewController: UIViewController {
     }
     
     @objc private func switchToDay() {
-        if switchTag != 3 {
+        if currentType != .day {
             UIView.animate(withDuration: 0.3, animations: {
-                self.switchTag = 3
                 self.currentType = .day
-                self.internalSwitchView.currentView.frame.origin.x = self.internalSwitchView.dayButton.frame.origin.x
+                self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.dayButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.day)
                 if self.showExpense {
                     self.setupChartView(chartView: self.chartView, by: .day)

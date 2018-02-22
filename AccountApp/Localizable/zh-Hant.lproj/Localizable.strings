@@ -25,6 +25,7 @@
 "Remind" = "提醒";
 "Delete" = "刪除";
 "DeleteAlert" = "確定要刪除此筆資料?";
+"Total" = "總和";
 
 // MARK: - Account
 "Income" = "收入";

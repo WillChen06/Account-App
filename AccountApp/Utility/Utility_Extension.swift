@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum Interval {
+    case year
+    case month
+    case week
+    case day
+}
+
 extension Sequence {
     func group<GroupingType: Hashable>(by key: (Iterator.Element) -> GroupingType) -> [[Iterator.Element]] {
         var groups: [GroupingType: [Iterator.Element]] = [:]
