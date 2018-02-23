@@ -11,7 +11,7 @@ import Charts
 import RealmSwift
 
 class ChartViewController: UIViewController {
-
+    
     // MARK: - Properties
     
     lazy var intervalSwitchView: IntervalSwitchView = {
@@ -67,8 +67,7 @@ class ChartViewController: UIViewController {
         tableView.register(ChartListCell.self, forCellReuseIdentifier: String(describing: ChartListCell.self))
         return tableView
     }()
-        
-//    var switchTag = 0
+    
     var currentType: Interval = .day
     var showExpense: Bool = true
     var chartDictionary: [String : Int] = [:]
@@ -118,7 +117,7 @@ class ChartViewController: UIViewController {
         if #available(iOS 11, *) {
             intervalSwitchView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         } else {
-           intervalSwitchView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
+            intervalSwitchView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         }
         
         displayDateLabel.anchor(top: intervalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
@@ -166,24 +165,15 @@ class ChartViewController: UIViewController {
         let entries = (0..<data.count).map { (i) -> PieChartDataEntry in
             // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.
             return PieChartDataEntry(value: Double(Array(data)[i].value),
-                                     label: Array(data)[i].key,
+                                     label: nil,
                                      icon: nil)
         }
         let set = PieChartDataSet(values: entries, label: "Election Results")
         set.drawIconsEnabled = false
         set.sliceSpace = 2
         set.colors = colorsData
+        set.drawValuesEnabled = false
         let data = PieChartData(dataSet: set)
-        
-        let pFormatter = NumberFormatter()
-        pFormatter.numberStyle = .percent
-        pFormatter.maximumFractionDigits = 1
-        pFormatter.multiplier = 1
-        pFormatter.percentSymbol = " %"
-        data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-        
-        data.setValueFont(.systemFont(ofSize: 11, weight: .light))
-        data.setValueTextColor(.black)
         if isExpense {
             chartView.data = data
             chartView.highlightValues(nil)
@@ -191,13 +181,13 @@ class ChartViewController: UIViewController {
             incomeChartView.data = data
             incomeChartView.highlightValues(nil)
         }
-       
+        
     }
     func setup(pieChartView chartView: PieChartView) {
         chartView.usePercentValuesEnabled = true
         chartView.drawSlicesUnderHoleEnabled = false
         chartView.holeRadiusPercent = 0.6
-//        chartView.transparentCircleRadiusPercent = 0.61
+        //        chartView.transparentCircleRadiusPercent = 0.61
         chartView.chartDescription?.enabled = false
         chartView.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
         
@@ -212,10 +202,10 @@ class ChartViewController: UIViewController {
         }
         centerText.setAttributes([.font : UIFont.systemFont(ofSize: 17.0),
                                   .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
-//        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-//                                  .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
-//        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-//                                  .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
+        //        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
+        //                                  .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
+        //        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
+        //                                  .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
         chartView.centerAttributedText = centerText;
         
         chartView.drawHoleEnabled = true
@@ -240,7 +230,7 @@ class ChartViewController: UIViewController {
             })
         }
     }
-
+    
     @objc private func switchToMonth() {
         if currentType != .month {
             UIView.animate(withDuration: 0.3, animations: {
@@ -342,15 +332,15 @@ class ChartViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 // MARK: - Chart protocol
@@ -387,9 +377,11 @@ extension ChartViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ChartListCell.self), for: indexPath) as? ChartListCell else {
             return UITableViewCell()
         }
+        let amount = Double(Array(chartDictionary)[indexPath.row].value)
         cell.typeImageView.backgroundColor = colorsData[indexPath.row]
         cell.nameLabel.text = Array(chartDictionary)[indexPath.row].key
-        cell.amountLabel.text = String(describing: Array(chartDictionary)[indexPath.row].value)
+        cell.percentageLabel.text = (amount / Double(total)).toPercentage
+        cell.amountLabel.text = String(describing: amount)
         return cell
     }
 }

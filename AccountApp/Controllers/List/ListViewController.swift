@@ -36,10 +36,12 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: String(describing: ListTableViewCell.self))
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
     var currentType: Interval = .day
+    var listData: Results<Account>?
     var accounts: Results<Account>? = {
         return RealmHelper.objects(Account.self)
     }()
@@ -140,7 +142,7 @@ class ListViewController: UIViewController {
         case .year:
             data = accounts?.filter("date >= %@ && date <= %@", Date().startOfYear!, Date().endOfYear!)
         }
-        
+        listData = data
         sumOfIncome = (data?.filter("type == %@", "Income").reduce(0, { (result, account) -> Int in
             return result + Int(account.amount)!
         }))!
@@ -155,6 +157,7 @@ class ListViewController: UIViewController {
             self.totalDisplayView.sumOfExpenseLabel.text = "$" + String(describing: sumOfExpenses)
             self.totalDisplayView.sumOfIncomeLabel.text = "$" + String(describing: sumOfIncome)
             self.totalDisplayView.totalLabel.text = "$" + String(describing: total)
+            self.listTableView.reloadData()
         }
     }
     
@@ -192,24 +195,54 @@ class ListViewController: UIViewController {
 
 // MARK: - TableView protocol
 extension ListViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if listData?.count == 0 { return 0 }
+        return 2
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if section == 0 {
+            return listData?.filter("type == %@", "Expense").count ?? 0
+        } else {
+            return listData?.filter("type == %@", "Income").count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ListTableViewCell.self), for: indexPath) as? ListTableViewCell else {
             return UITableViewCell()
         }
+        let data: Results<Account>?
+        let category: Int
+        if indexPath.section == 0 {
+            data = listData?.filter("type == %@", "Expense").sorted(byKeyPath: "date")
+            category = data![indexPath.row].category.value!
+            cell.titleLabel.text = Category.Expense().name[category]
+            cell.typeImageView.image = UIImage(named: Category.Expense().imageName[category])
+        } else {
+            data = listData?.filter("type == %@", "Income").sorted(byKeyPath: "date")
+            category = data![indexPath.row].category.value!
+            cell.titleLabel.text = Category.Income().name[category]
+            cell.typeImageView.image = UIImage(named: Category.Income().imageName[category])
+        }
+        cell.dataLabel.text = data![indexPath.row].date.toString(format: "MMM. dd")
+        cell.describeLabel.text = data![indexPath.row].detail
+        cell.amountLabel.text = data![indexPath.row].amount
         return cell
     }
 }
 
 extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionView = ListSectionView()
+        if section == 0 {
+            sectionView.sectionTitle.text = .expenses
+        } else {
+            sectionView.sectionTitle.text = .income
+        }
+        return sectionView
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 66.0
+        return 100.0
     }
 }

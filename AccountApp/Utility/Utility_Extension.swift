@@ -30,3 +30,14 @@ extension Sequence {
     }
 }
 
+extension Double {
+    var toPercentage: String? {
+        let pFormatter = NumberFormatter()
+        pFormatter.numberStyle = .percent
+        pFormatter.maximumFractionDigits = 1
+        pFormatter.multiplier = 1
+        pFormatter.percentSymbol = " %"
+        return pFormatter.string(from: self * 100 as NSNumber)
+    }
+}
+

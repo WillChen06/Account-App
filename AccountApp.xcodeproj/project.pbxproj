@@ -38,6 +38,7 @@
 		F90DAC4B202EE3E40018E4E8 /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90DAC4A202EE3E40018E4E8 /* IncomeCell.swift */; };
 		F96B40342031EDA20090D308 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96B40332031EDA20090D308 /* ListViewController.swift */; };
 		F96B40362031EDAC0090D308 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96B40352031EDAC0090D308 /* ChartViewController.swift */; };
+		F96E5627203FE09A008E6D56 /* ListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E5626203FE09A008E6D56 /* ListSectionView.swift */; };
 		F9756510203EF6F20067D56A /* SumDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975650F203EF6F20067D56A /* SumDisplayView.swift */; };
 		F9AF4E932031EFDA00DA437D /* TypeSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */; };
 		F9AF4E952031EFE900DA437D /* TypeSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */; };
@@ -97,6 +98,7 @@
 		F90DAC4A202EE3E40018E4E8 /* IncomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
 		F96B40332031EDA20090D308 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F96B40352031EDAC0090D308 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		F96E5626203FE09A008E6D56 /* ListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionView.swift; sourceTree = "<group>"; };
 		F975650F203EF6F20067D56A /* SumDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumDisplayView.swift; sourceTree = "<group>"; };
 		F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSwitchView.swift; sourceTree = "<group>"; };
 		F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSwitchView.xib; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				F975650F203EF6F20067D56A /* SumDisplayView.swift */,
 				F9BFCB84203F14410070F12A /* ListTableViewCell.swift */,
+				F96E5626203FE09A008E6D56 /* ListSectionView.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96E5627203FE09A008E6D56 /* ListSectionView.swift in Sources */,
 				86163D2A1FF8DBB400D784B1 /* AccountDescriptionCell.swift in Sources */,
 				F908D83D20147A99005DD8A4 /* UIAlertController+Helper.swift in Sources */,
 				8674E5F51FE617EA005B643D /* UIView+Helper.swift in Sources */,
