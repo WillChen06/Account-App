@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InternalSwitchView: UIView {
+class IntervalSwitchView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var yearButton: UIButton!
     @IBOutlet weak var monthButton: UIButton!
@@ -26,7 +26,7 @@ class InternalSwitchView: UIView {
     }
     
     fileprivate func commonInit() {
-        Bundle.main.loadNibNamed("InternalSwitchView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("IntervalSwitchView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
