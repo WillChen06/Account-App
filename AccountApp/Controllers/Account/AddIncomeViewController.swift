@@ -90,7 +90,7 @@ class AddIncomeViewController: UIViewController {
     let pickerItems: [String] = [.cash, .bank, .creditCard]
     var calculator = Calculator()
     var account: Account?
-    var delegate: AccountViewControllerDelegate?
+//    var delegate: AccountViewControllerDelegate?
     var newMode: Bool = true
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -285,7 +285,7 @@ class AddIncomeViewController: UIViewController {
                 account?.category.value = category
                 account?.account = accountType
                 account?.detail = detail
-                delegate?.updateCalendarData()
+                NotificationCenter.default.post(name: .updateCalendar, object: nil)
                 dismiss(animated: true, completion: nil)
             }
         }
@@ -295,7 +295,7 @@ class AddIncomeViewController: UIViewController {
         let deleteAlert = UIAlertController(title: .remind, message: .deleteAlert, preferredStyle: .alert)
         deleteAlert.addAction(title: .ok, style: .default) { (action) in
             self.account?.delete()
-            self.delegate?.updateCalendarData()
+            NotificationCenter.default.post(name: .updateCalendar, object: nil)
             self.dismiss(animated: true, completion: nil)
         }
         deleteAlert.addAction(title: .cancel, style: .cancel, handler: nil)

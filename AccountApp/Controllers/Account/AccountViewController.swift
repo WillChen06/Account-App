@@ -10,9 +10,9 @@ import UIKit
 import JTAppleCalendar
 import RealmSwift
 
-protocol AccountViewControllerDelegate {
-    func updateCalendarData()
-}
+//protocol AccountViewControllerDelegate {
+//    func updateCalendarData()
+//}
 
 class AccountViewController: UIViewController {
     // MARK: - IBOutlet
@@ -33,11 +33,17 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.applyGradient(colors: [.brightCyan, .softBlue])
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCalendarData), name: .updateCalendar, object: nil)
         setupViews()
-//        RealmHelper.deleteAll()
         print("Paths : \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        calendarView.reloadData()
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -106,7 +112,6 @@ class AccountViewController: UIViewController {
 
     @IBAction func addAccount(_ sender: UIBarButtonItem) {
         let addAccountVC = UIStoryboard(name: "AddAccount", bundle: nil).instantiateViewController(withIdentifier: "AddAccountViewController") as? AddAccountViewController
-        addAccountVC?.delegate = self
         addAccountVC?.date = selectedDate
         let navigationVC = UINavigationController(rootViewController: addAccountVC!)
         present(navigationVC, animated: true, completion: nil)
@@ -116,6 +121,11 @@ class AccountViewController: UIViewController {
         calendarView.deselectAllDates()
         calendarView.scrollToDate(Date())
         calendarView.selectDates([Date()])
+    }
+    
+    @objc func updateCalendarData() {
+        calendarView.reloadData()
+        tableView.reloadData()
     }
     
     /*
@@ -216,7 +226,6 @@ extension AccountViewController: UITableViewDelegate {
             let expenseVC = AddExpensesViewController()
             let navigationVC = UINavigationController(rootViewController: expenseVC)
             expenseVC.account = accounts?.sorted(byKeyPath: "type")[indexPath.row]
-            expenseVC.delegate = self
             expenseVC.newMode = false
             present(navigationVC, animated: true, completion: nil)
         }
@@ -224,7 +233,6 @@ extension AccountViewController: UITableViewDelegate {
             let incomeVC = AddIncomeViewController()
             let navigationVC = UINavigationController(rootViewController: incomeVC)
             incomeVC.account = accounts?.sorted(byKeyPath: "type")[indexPath.row]
-            incomeVC.delegate = self
             incomeVC.newMode = false
             present(navigationVC, animated: true, completion: nil)
         }
@@ -232,9 +240,10 @@ extension AccountViewController: UITableViewDelegate {
 }
 
 // MARK: - Account Protocol
-extension AccountViewController: AccountViewControllerDelegate {
-    func updateCalendarData() {
-        calendarView.reloadData()
-        tableView.reloadData()
-    }
-}
+//extension AccountViewController: AccountViewControllerDelegate {
+//    func updateCalendarData() {
+//        calendarView.reloadData()
+//        tableView.reloadData()
+//    }
+//}
+

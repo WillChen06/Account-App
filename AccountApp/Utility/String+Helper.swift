@@ -9,6 +9,15 @@
 import Foundation
 
 extension String {
+    
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    }
+    
+    var appBuild: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+    }
+    
     // MARK: - Calculator Input String
     
     /// Determines whether the string is the Delete charater.

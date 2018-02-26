@@ -53,6 +53,7 @@ class CalculatorView: UIView {
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30.0)
         }
         NotificationCenter.default.addObserver(self, selector: #selector(changeToEqual), name: .changeToEqual, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeToOk), name: .changeToOk, object: nil)
     }
     
     // MARK: - Actions
@@ -61,14 +62,19 @@ class CalculatorView: UIView {
     }
 
     @objc func changeToEqual() {
-        switch (equlButton.titleLabel?.text)! {
-        case "OK":
-            equlButton.setTitle("=", for: .normal)
-        case "=":
-            equlButton.setTitle("OK", for: .normal)
-        default:
-            break
-        }
+//        switch (equlButton.titleLabel?.text)! {
+//        case "OK":
+//            equlButton.setTitle("=", for: .normal)
+//        case "=":
+//            equlButton.setTitle("OK", for: .normal)
+//        default:
+//            break
+//        }
+        equlButton.setTitle("=", for: .normal)
+    }
+    
+    @objc func changeToOk() {
+        equlButton.setTitle("OK", for: .normal)
     }
 
 }

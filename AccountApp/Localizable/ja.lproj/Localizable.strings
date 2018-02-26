@@ -7,6 +7,7 @@
 */
 
 // MARK: - Universal
+"AppName" = "らく家計簿";
 "Setting" = "設定";
 "Save" = "セーブ";
 "Cancel" = "キャンセル";
@@ -65,3 +66,14 @@
 "Bonus" = "ボーナス";
 "Allowance" = "手当";
 "Invest" = "投資";
+
+// MARK: - Setting
+"DailyNotification" = "毎日通知";
+"AppInfo" = "アプリ情報";
+"ClearData" = "データを消去する";
+"BasicSetting" = "基本設定";
+"Notification" = "通知";
+"Info" = "情報";
+"Data" = "データ";
+"ClearAlert" = "この行動によって\n全てのデータを消去する\n後に復元はできません\n続けてもよろしいでしょうか？";
+"NotificationBody" = "今日の記入をお忘れではありませんか？";

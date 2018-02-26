@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - Universal
 extension String {
+    static let appName = NSLocalizedString("AppName", comment: "")
     static let setting = NSLocalizedString("Setting", comment: "")
     static let save = NSLocalizedString("Save", comment: "")
     static let cancel = NSLocalizedString("Cancel", comment: "")
@@ -74,4 +75,17 @@ extension String {
     static let bonus = NSLocalizedString("Bonus", comment: "")
     static let allowance = NSLocalizedString("Allowance", comment: "")
     static let invest = NSLocalizedString("Invest", comment: "")
+}
+
+// MARK: - Setting
+extension String {
+    static let dailyNotification = NSLocalizedString("DailyNotification", comment: "")
+    static let appInfo = NSLocalizedString("AppInfo", comment: "")
+    static let clearData = NSLocalizedString("ClearData", comment: "")
+    static let basicSetting = NSLocalizedString("BasicSetting", comment: "")
+    static let notification = NSLocalizedString("Notification", comment: "")
+    static let info  = NSLocalizedString("Info", comment: "")
+    static let data = NSLocalizedString("Data", comment: "")
+    static let clearAlert = NSLocalizedString("ClearAlert", comment: "")
+    static let notificationBody = NSLocalizedString("NotificationBody", comment: "")
 }

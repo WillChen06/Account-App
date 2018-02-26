@@ -7,6 +7,7 @@
 */
 
 // MARK: - Universal
+"AppName" = "Easy Account";
 "Setting" = "Setting";
 "Save" = "Save";
 "Cancel" = "Cancel";
@@ -65,3 +66,14 @@
 "Bonus" = "Bonus";
 "Allowance" = "Allowance";
 "Invest" = "Invest";
+
+// MARK: - Setting
+"DailyNotification" = "Daily Notification";
+"AppInfo" = "App Info";
+"ClearData" = "ClearData";
+"BasicSetting" = "BasicSetting";
+"Notification" = "Notification";
+"Info" = "Info";
+"Data" = "Data";
+"ClearAlert" = "This action will clear all data\nIt can't recover after clear\nAre you still want to clear?";
+"NotificationBody" = "Do you remember to account today?";

@@ -15,5 +15,7 @@ extension Notification.Name {
     static let clearIncome = Notification.Name("clearIncome")
     static let dismissVC = Notification.Name("dismissVC")
     static let changeToEqual = Notification.Name("changeToEqual")
+    static let changeToOk = Notification.Name("changeToOk")
     static let hideCalculator = Notification.Name("hideCalculator")
+    static let updateCalendar = Notification.Name("updateCalendar")
 }
