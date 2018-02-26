@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupNavigation()
-        IQKeyboardManager.sharedManager().enable = true
+//        IQKeyboardManager.sharedManager().enable = true
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if !granted {
+                print("Some error occur : \(String(describing: error?.localizedDescription))")
+            }
+        }
+        if UserDefaults.standard.isNotificationMode() {
+            UNUserNotificationCenter.current().addDailyNotification()
+        }
+        
         return true
     }
     
@@ -49,5 +59,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.white]
     }
+    
+    // MARK: - Add User Notification
+//    func addUserNotification() {
+//        let content = UNMutableNotificationContent()
+//        content.body = .notificationBody
+//        content.sound = UNNotificationSound.default()
+//        var dateComponets = DateComponents()
+//        dateComponets.hour = 20
+//        let date = Calendar(identifier: .gregorian).date(from: dateComponets)
+//        let daily = Calendar.current.dateComponents([.hour, .minute, .second], from: date!)
+//        let triggerDaily = UNCalendarNotificationTrigger(dateMatching: daily, repeats: true)
+//        let request = UNNotificationRequest(identifier: "CheckAlert", content: content, trigger: triggerDaily)
+//        let center = UNUserNotificationCenter.current()
+//        center.addDailyNotification()
+//        center.add(request) { (error) in
+//            if error != nil {
+//                print("Push Error : \(String(describing: error?.localizedDescription))")
+//            }
+//        }
+//    }
 }
 

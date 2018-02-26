@@ -60,36 +60,31 @@ class Calculator {
                 // Add it to the current display.
                 display += input
             }
-        } else if input.isOperator || input.isEqualSign {
-            NotificationCenter.default.post(name: .changeToEqual, object: nil)
-            if (operatorValue == nil) && !(input.isEqualSign){
+        } else if input.isOperator {
+            if (operatorValue == nil) {
+                NotificationCenter.default.post(name: .changeToEqual, object: nil)
                 leftOperand = Double(displayValue)
-                operatorValue = input
-            } else {
-                if let sign = operatorValue, let operand = leftOperand, let rightOperand = Double(displayValue) {
-                    
-                    if let result = operation(left: operand, right: rightOperand, sign: sign) {
-                        display = "\(String(format: "%g", result))"
-                    }
-                }
-                operatorValue = (input.isEqualSign) ? nil : input
             }
-            
+            operatorValue = input
+            isLastCharacterOperator = true
+        } else if input.isEqualSign {
+            NotificationCenter.default.post(name: .changeToOk, object: nil)
+            if let sign = operatorValue, let operand = leftOperand, let rightOperand = Double(displayValue) {
+                if let result = operation(left: operand, right: rightOperand, sign: sign) {
+                    display = "\(String(format: "%g", result))"
+                }
+            }
+            operatorValue = nil
             isLastCharacterOperator = true
         } else if input.isOkSign{
             NotificationCenter.default.post(name: .hideCalculator, object: nil)
         } else if input.isClear {
-            NotificationCenter.default.post(name: .changeToEqual, object: nil)
+            NotificationCenter.default.post(name: .changeToOk, object: nil)
             if !(display.isEmpty) {
                 display.removeAll()
             } else {
                 operatorValue = nil
             }
-        } else if input.isDelete {
-            if display.isEmpty {
-                display = String(display.dropLast())
-            }
-            isLastCharacterOperator = false
         }
     }
     

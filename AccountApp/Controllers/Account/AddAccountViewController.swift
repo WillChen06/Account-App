@@ -49,7 +49,7 @@ class AddAccountViewController: UIViewController {
         }
     }
     
-    var delegate: AccountViewControllerDelegate?
+//    var delegate: AccountViewControllerDelegate?
     var date = Date()
     var typeTag = 0
     
@@ -104,7 +104,7 @@ class AddAccountViewController: UIViewController {
         } else {
             NotificationCenter.default.post(name: .saveIncome, object: nil)
         }
-        delegate?.updateCalendarData()
+        NotificationCenter.default.post(name: .updateCalendar, object: nil)
     }
     
     

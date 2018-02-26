@@ -7,14 +7,23 @@
 //
 
 import UIKit
+import UserNotifications
+
+protocol SettingViewControllerDelegate {
+    func switchMode(_ sender: UISwitch)
+}
 
 class SettingViewController: UIViewController {
-
+    
+    // MARK: - Properties
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -59,16 +68,92 @@ class SettingViewController: UIViewController {
 // MARK: - UITableView Protocol
 extension SettingViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        case 2:
+            return 1
+        default:
+            fatalError("Unknown section.")
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        switch indexPath.section {
+        case 0:
+            let cell = LocalNotificationCell()
+            cell.selectionStyle = .none
+            cell.delegate = self
+            return cell
+        case 1:
+            let cell = AppInfoCell()
+            return cell
+        case 2:
+            let cell = ClearDataCell()
+            return cell
+        default:
+            fatalError("Unknown section.")
+        }
     }
 }
 
 extension SettingViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return .basicSetting
+        case 1:
+            return .info
+        case 2:
+            return .data
+        default:
+            fatalError("Unknown section")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 0:
+//            let notificationVC = LocalNotificationViewController()
+//            navigationController?.pushViewController(notificationVC, animated: true)
+            break
+        case 1:
+            let versionVC = VersionViewController()
+            navigationController?.pushViewController(versionVC, animated: true)
+        case 2:
+            let alert = UIAlertController(title: .remind, message: .clearAlert, preferredStyle: .alert)
+            alert.addAction(title: .ok, style: .default, handler: { (_) in
+                RealmHelper.deleteAll()
+            })
+            alert.addAction(title: .cancel, style: .cancel, handler: nil)
+            present(alert, animated: true, completion: nil)
+        default:
+            fatalError("Unknown section")
+        }
+    }
+}
+
+
+extension SettingViewController: SettingViewControllerDelegate {
+    func switchMode(_ sender: UISwitch) {
+        if sender.isOn {
+            UserDefaults.standard.setNotificationMode(true)
+            UNUserNotificationCenter.current().addDailyNotification()
+            print("Change To True")
+        } else {
+            UserDefaults.standard.setNotificationMode(false)
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+            print("Change To False")
+        }
+    }
 }

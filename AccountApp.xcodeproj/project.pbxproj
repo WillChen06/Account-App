@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D1481381FE3A8E300344ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1481371FE3A8E300344ADF /* AppDelegate.swift */; };
 		3D14813D1FE3A8E300344ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D14813B1FE3A8E300344ADF /* Main.storyboard */; };
-		3D1481421FE3A8E300344ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D1481401FE3A8E300344ADF /* LaunchScreen.storyboard */; };
 		3D92A99B1FE3B0F8008D4EEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D92A99D1FE3B0F8008D4EEF /* Localizable.strings */; };
 		501E86751FFCB8150089ACD4 /* AddDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501E86741FFCB8150089ACD4 /* AddDescriptionViewController.swift */; };
 		86163D2A1FF8DBB400D784B1 /* AccountDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86163D291FF8DBB400D784B1 /* AccountDescriptionCell.swift */; };
@@ -31,6 +30,12 @@
 		DC98BD5A32EE8DA09F227813 /* Pods_AccountApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E93DA5484B8C6BD618AFD81 /* Pods_AccountApp.framework */; };
 		F900EB91200C9A9600A7A126 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F900EB90200C9A9600A7A126 /* Calculator.swift */; };
 		F90202142026FCF5000F88A0 /* AccountDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */; };
+		F906F7852042E674007DCEE1 /* LocalNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7842042E674007DCEE1 /* LocalNotificationViewController.swift */; };
+		F906F7872042E67D007DCEE1 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7862042E67D007DCEE1 /* VersionViewController.swift */; };
+		F906F78A2042E6A2007DCEE1 /* LocalNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7892042E6A2007DCEE1 /* LocalNotificationCell.swift */; };
+		F906F7902042F107007DCEE1 /* ClearDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F78F2042F107007DCEE1 /* ClearDataCell.swift */; };
+		F906F7922042F152007DCEE1 /* AppInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7912042F152007DCEE1 /* AppInfoCell.swift */; };
+		F906F794204306DB007DCEE1 /* UserDefaults+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F793204306DB007DCEE1 /* UserDefaults+Helper.swift */; };
 		F9070B452039569D00E04A87 /* ChartListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9070B442039569D00E04A87 /* ChartListCell.swift */; };
 		F908D83B201474D4005DD8A4 /* Realm+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D83A201474D4005DD8A4 /* Realm+Helper.swift */; };
 		F908D83D20147A99005DD8A4 /* UIAlertController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F908D83C20147A99005DD8A4 /* UIAlertController+Helper.swift */; };
@@ -38,8 +43,10 @@
 		F90DAC4B202EE3E40018E4E8 /* IncomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90DAC4A202EE3E40018E4E8 /* IncomeCell.swift */; };
 		F96B40342031EDA20090D308 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96B40332031EDA20090D308 /* ListViewController.swift */; };
 		F96B40362031EDAC0090D308 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96B40352031EDAC0090D308 /* ChartViewController.swift */; };
+		F96BEB3520440515006BB471 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F96BEB3720440515006BB471 /* InfoPlist.strings */; };
 		F96E5627203FE09A008E6D56 /* ListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E5626203FE09A008E6D56 /* ListSectionView.swift */; };
 		F9756510203EF6F20067D56A /* SumDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975650F203EF6F20067D56A /* SumDisplayView.swift */; };
+		F98047502044504000C185F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F980474F2044504000C185F1 /* LaunchScreen.storyboard */; };
 		F9AF4E932031EFDA00DA437D /* TypeSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */; };
 		F9AF4E952031EFE900DA437D /* TypeSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */; };
 		F9AF4E9B2032AC0B00DA437D /* IntervalSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E9A2032AC0B00DA437D /* IntervalSwitchView.swift */; };
@@ -58,15 +65,12 @@
 		3D1481341FE3A8E300344ADF /* AccountApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1481371FE3A8E300344ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D14813C1FE3A8E300344ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3D1481411FE3A8E300344ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D1481431FE3A8E300344ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D14814E1FE3A96900344ADF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3D14814F1FE3A97C00344ADF /* ReleaseTest.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseTest.xcconfig; sourceTree = "<group>"; };
 		3D1481501FE3A98400344ADF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		3D92A9941FE3B07B008D4EEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
-		3D92A9951FE3B07B008D4EEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3D92A9991FE3B0DB008D4EEF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		3D92A99A1FE3B0DB008D4EEF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3D92A99C1FE3B0F8008D4EEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501E86741FFCB8150089ACD4 /* AddDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionViewController.swift; sourceTree = "<group>"; };
 		54EDF310C463A30E471F39C5 /* Pods-AccountApp.releasetest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountApp.releasetest.xcconfig"; path = "Pods/Target Support Files/Pods-AccountApp/Pods-AccountApp.releasetest.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +95,12 @@
 		9E93DA5484B8C6BD618AFD81 /* Pods_AccountApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AccountApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F900EB90200C9A9600A7A126 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayCell.swift; sourceTree = "<group>"; };
+		F906F7842042E674007DCEE1 /* LocalNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationViewController.swift; sourceTree = "<group>"; };
+		F906F7862042E67D007DCEE1 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
+		F906F7892042E6A2007DCEE1 /* LocalNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationCell.swift; sourceTree = "<group>"; };
+		F906F78F2042F107007DCEE1 /* ClearDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDataCell.swift; sourceTree = "<group>"; };
+		F906F7912042F152007DCEE1 /* AppInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoCell.swift; sourceTree = "<group>"; };
+		F906F793204306DB007DCEE1 /* UserDefaults+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift"; sourceTree = "<group>"; };
 		F9070B442039569D00E04A87 /* ChartListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListCell.swift; sourceTree = "<group>"; };
 		F908D83A201474D4005DD8A4 /* Realm+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Helper.swift"; sourceTree = "<group>"; };
 		F908D83C20147A99005DD8A4 /* UIAlertController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Helper.swift"; sourceTree = "<group>"; };
@@ -98,8 +108,12 @@
 		F90DAC4A202EE3E40018E4E8 /* IncomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCell.swift; sourceTree = "<group>"; };
 		F96B40332031EDA20090D308 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F96B40352031EDAC0090D308 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		F96BEB3620440515006BB471 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F96BEB3820440517006BB471 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F96BEB3920440518006BB471 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F96E5626203FE09A008E6D56 /* ListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionView.swift; sourceTree = "<group>"; };
 		F975650F203EF6F20067D56A /* SumDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumDisplayView.swift; sourceTree = "<group>"; };
+		F980474F2044504000C185F1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSwitchView.swift; sourceTree = "<group>"; };
 		F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSwitchView.xib; sourceTree = "<group>"; };
 		F9AF4E9A2032AC0B00DA437D /* IntervalSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalSwitchView.swift; sourceTree = "<group>"; };
@@ -157,7 +171,7 @@
 				86B01D9C1FF4925D002B3655 /* Assets.xcassets */,
 				3D14813B1FE3A8E300344ADF /* Main.storyboard */,
 				F9F98F3B20218D4A009FBC95 /* AddAccount.storyboard */,
-				3D1481401FE3A8E300344ADF /* LaunchScreen.storyboard */,
+				F980474F2044504000C185F1 /* LaunchScreen.storyboard */,
 				3D1481431FE3A8E300344ADF /* Info.plist */,
 			);
 			path = AccountApp;
@@ -178,6 +192,7 @@
 			children = (
 				3D92A99D1FE3B0F8008D4EEF /* Localizable.strings */,
 				8674E6051FE6442F005B643D /* StringLocalizable.swift */,
+				F96BEB3720440515006BB471 /* InfoPlist.strings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -235,6 +250,7 @@
 				86F6DFF31FEA0F78005A4299 /* Utility_Extension.swift */,
 				F9AF4E9F20356E7900DA437D /* Date+Helper.swift */,
 				F9AF4EA120356EAB00DA437D /* String+Helper.swift */,
+				F906F793204306DB007DCEE1 /* UserDefaults+Helper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -251,6 +267,7 @@
 		8674E5F91FE63604005B643D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F906F7882042E68C007DCEE1 /* Setting */,
 				F975650E203EF6C40067D56A /* List */,
 				F9070B412039565F00E04A87 /* Chart */,
 				F90202122026FCE2000F88A0 /* Account */,
@@ -288,6 +305,8 @@
 			isa = PBXGroup;
 			children = (
 				8674E6031FE63ABD005B643D /* SettingViewController.swift */,
+				F906F7842042E674007DCEE1 /* LocalNotificationViewController.swift */,
+				F906F7862042E67D007DCEE1 /* VersionViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -308,6 +327,16 @@
 				F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		F906F7882042E68C007DCEE1 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F906F7892042E6A2007DCEE1 /* LocalNotificationCell.swift */,
+				F906F7912042F152007DCEE1 /* AppInfoCell.swift */,
+				F906F78F2042F107007DCEE1 /* ClearDataCell.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		F9070B412039565F00E04A87 /* Chart */ = {
@@ -408,13 +437,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98047502044504000C185F1 /* LaunchScreen.storyboard in Resources */,
 				F9F98F3C20218D4A009FBC95 /* AddAccount.storyboard in Resources */,
 				F9AF4E9D2032AC1200DA437D /* IntervalSwitchView.xib in Resources */,
-				3D1481421FE3A8E300344ADF /* LaunchScreen.storyboard in Resources */,
 				3D92A99B1FE3B0F8008D4EEF /* Localizable.strings in Resources */,
 				865947761FEB504B00B3D868 /* CalculatorView.xib in Resources */,
 				3D14813D1FE3A8E300344ADF /* Main.storyboard in Resources */,
 				F9AF4E952031EFE900DA437D /* TypeSwitchView.xib in Resources */,
+				F96BEB3520440515006BB471 /* InfoPlist.strings in Resources */,
 				86B01D9D1FF4925D002B3655 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,9 +528,11 @@
 				8674E6021FE63AAE005B643D /* AccountViewController.swift in Sources */,
 				F96B40362031EDAC0090D308 /* ChartViewController.swift in Sources */,
 				8674E6001FE63799005B643D /* UINavigationBar+Helper.swift in Sources */,
+				F906F794204306DB007DCEE1 /* UserDefaults+Helper.swift in Sources */,
 				F908D83B201474D4005DD8A4 /* Realm+Helper.swift in Sources */,
 				3D1481381FE3A8E300344ADF /* AppDelegate.swift in Sources */,
 				86FE3C5C1FEA502A00FFAC4B /* AddAccountViewController.swift in Sources */,
+				F906F7922042F152007DCEE1 /* AppInfoCell.swift in Sources */,
 				F9AF4E932031EFDA00DA437D /* TypeSwitchView.swift in Sources */,
 				86B01D9F1FF4C40B002B3655 /* Category.swift in Sources */,
 				86FE3C5A1FEA497700FFAC4B /* Account.swift in Sources */,
@@ -513,15 +545,19 @@
 				F9AF4E9B2032AC0B00DA437D /* IntervalSwitchView.swift in Sources */,
 				8674E6061FE6442F005B643D /* StringLocalizable.swift in Sources */,
 				F9F98F3E20218EE7009FBC95 /* AddIncomeViewController.swift in Sources */,
+				F906F7872042E67D007DCEE1 /* VersionViewController.swift in Sources */,
+				F906F7852042E674007DCEE1 /* LocalNotificationViewController.swift in Sources */,
 				F9AF4EA220356EAB00DA437D /* String+Helper.swift in Sources */,
 				8633EEE81FECE02600B8E48C /* SelectAccountTypeCell.swift in Sources */,
 				F9AF4EA020356E7900DA437D /* Date+Helper.swift in Sources */,
 				501E86751FFCB8150089ACD4 /* AddDescriptionViewController.swift in Sources */,
 				F9F98F422022F8F4009FBC95 /* Notification+Helper.swift in Sources */,
+				F906F78A2042E6A2007DCEE1 /* LocalNotificationCell.swift in Sources */,
 				F90202142026FCF5000F88A0 /* AccountDisplayCell.swift in Sources */,
 				F9070B452039569D00E04A87 /* ChartListCell.swift in Sources */,
 				F90DAC4B202EE3E40018E4E8 /* IncomeCell.swift in Sources */,
 				F96B40342031EDA20090D308 /* ListViewController.swift in Sources */,
+				F906F7902042F107007DCEE1 /* ClearDataCell.swift in Sources */,
 				F9F98F4020218EFC009FBC95 /* AddExpensesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -539,16 +575,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		3D1481401FE3A8E300344ADF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D1481411FE3A8E300344ADF /* Base */,
-				3D92A9951FE3B07B008D4EEF /* zh-Hant */,
-				3D92A99A1FE3B0DB008D4EEF /* ja */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		3D92A99D1FE3B0F8008D4EEF /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -557,6 +583,16 @@
 				8674E5F21FE60CA7005B643D /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F96BEB3720440515006BB471 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F96BEB3620440515006BB471 /* en */,
+				F96BEB3820440517006BB471 /* zh-Hant */,
+				F96BEB3920440518006BB471 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -678,6 +714,7 @@
 			baseConfigurationReference = FD09D4AF3C2550C6AA68C756 /* Pods-AccountApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AccountLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YL95KDQ6V;
 				INFOPLIST_FILE = AccountApp/Info.plist;
@@ -686,7 +723,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -695,6 +732,7 @@
 			baseConfigurationReference = 28BDD904DF254C2992BF9392 /* Pods-AccountApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AccountLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YL95KDQ6V;
 				INFOPLIST_FILE = AccountApp/Info.plist;
@@ -703,7 +741,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -771,6 +809,7 @@
 			baseConfigurationReference = 54EDF310C463A30E471F39C5 /* Pods-AccountApp.releasetest.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AccountLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YL95KDQ6V;
 				INFOPLIST_FILE = AccountApp/Info.plist;
@@ -779,7 +818,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ReleaseTest;
 		};

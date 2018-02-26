@@ -7,6 +7,7 @@
 */
 
 // MARK: - Universal
+"AppName" = "輕鬆計";
 "Setting" = "設定";
 "Save" = "儲存";
 "Cancel" = "取消";
@@ -65,3 +66,14 @@
 "Bonus" = "獎金";
 "Allowance" = "補助費";
 "Invest" = "投資";
+
+// MARK: - Setting
+"DailyNotification" = "每日通知";
+"AppInfo" = "App資訊";
+"ClearData" = "清除資料";
+"BasicSetting" = "基本設定";
+"Notification" = "通知";
+"Info" = "資訊";
+"Data" = "資料";
+"ClearAlert" = "此動作將清除所有資料\n清除後將無法回復\n仍確定要清除資料？";
+"NotificationBody" = "你今天記帳了嗎？";
