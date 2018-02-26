@@ -13,7 +13,7 @@ extension UIView {
     func applyViewGradient(colors: [UIColor]) -> Void {
         self.applyViewGradient(colors: colors, locations: nil)
     }
-//
+
     func applyViewGradient(colors: [UIColor], locations: [NSNumber]?) -> Void {
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds
@@ -23,7 +23,7 @@ extension UIView {
         gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
         self.layer.insertSublayer(gradient, at: 0)
     }
-//
+
     // MARK: - Anchor
     func anchor(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0.0, leftConstant: CGFloat = 0.0, bottomConstant: CGFloat = 0.0, rightConstant: CGFloat = 0.0, widthConstant: CGFloat = 0.0, heightConstant: CGFloat = 0.0) {
         _ = anchorWithReturnAnchors(top: top, left: left, bottom: bottom, right: right, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: heightConstant)
@@ -63,4 +63,3 @@ extension UIView {
         return anchors
     }
 }
-

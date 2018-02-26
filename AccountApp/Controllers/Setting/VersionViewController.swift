@@ -15,6 +15,7 @@ class VersionViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage.appIcon
         return imageView
     }()
     

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D1481381FE3A8E300344ADF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1481371FE3A8E300344ADF /* AppDelegate.swift */; };
 		3D14813D1FE3A8E300344ADF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D14813B1FE3A8E300344ADF /* Main.storyboard */; };
-		3D1481421FE3A8E300344ADF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D1481401FE3A8E300344ADF /* LaunchScreen.storyboard */; };
 		3D92A99B1FE3B0F8008D4EEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D92A99D1FE3B0F8008D4EEF /* Localizable.strings */; };
 		501E86751FFCB8150089ACD4 /* AddDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501E86741FFCB8150089ACD4 /* AddDescriptionViewController.swift */; };
 		86163D2A1FF8DBB400D784B1 /* AccountDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86163D291FF8DBB400D784B1 /* AccountDescriptionCell.swift */; };
@@ -47,6 +46,7 @@
 		F96BEB3520440515006BB471 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F96BEB3720440515006BB471 /* InfoPlist.strings */; };
 		F96E5627203FE09A008E6D56 /* ListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E5626203FE09A008E6D56 /* ListSectionView.swift */; };
 		F9756510203EF6F20067D56A /* SumDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975650F203EF6F20067D56A /* SumDisplayView.swift */; };
+		F98047502044504000C185F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F980474F2044504000C185F1 /* LaunchScreen.storyboard */; };
 		F9AF4E932031EFDA00DA437D /* TypeSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */; };
 		F9AF4E952031EFE900DA437D /* TypeSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */; };
 		F9AF4E9B2032AC0B00DA437D /* IntervalSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E9A2032AC0B00DA437D /* IntervalSwitchView.swift */; };
@@ -65,15 +65,12 @@
 		3D1481341FE3A8E300344ADF /* AccountApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1481371FE3A8E300344ADF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D14813C1FE3A8E300344ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3D1481411FE3A8E300344ADF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D1481431FE3A8E300344ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D14814E1FE3A96900344ADF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		3D14814F1FE3A97C00344ADF /* ReleaseTest.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseTest.xcconfig; sourceTree = "<group>"; };
 		3D1481501FE3A98400344ADF /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		3D92A9941FE3B07B008D4EEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
-		3D92A9951FE3B07B008D4EEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3D92A9991FE3B0DB008D4EEF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
-		3D92A99A1FE3B0DB008D4EEF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3D92A99C1FE3B0F8008D4EEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		501E86741FFCB8150089ACD4 /* AddDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDescriptionViewController.swift; sourceTree = "<group>"; };
 		54EDF310C463A30E471F39C5 /* Pods-AccountApp.releasetest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountApp.releasetest.xcconfig"; path = "Pods/Target Support Files/Pods-AccountApp/Pods-AccountApp.releasetest.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +113,7 @@
 		F96BEB3920440518006BB471 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F96E5626203FE09A008E6D56 /* ListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionView.swift; sourceTree = "<group>"; };
 		F975650F203EF6F20067D56A /* SumDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumDisplayView.swift; sourceTree = "<group>"; };
+		F980474F2044504000C185F1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSwitchView.swift; sourceTree = "<group>"; };
 		F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSwitchView.xib; sourceTree = "<group>"; };
 		F9AF4E9A2032AC0B00DA437D /* IntervalSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalSwitchView.swift; sourceTree = "<group>"; };
@@ -173,7 +171,7 @@
 				86B01D9C1FF4925D002B3655 /* Assets.xcassets */,
 				3D14813B1FE3A8E300344ADF /* Main.storyboard */,
 				F9F98F3B20218D4A009FBC95 /* AddAccount.storyboard */,
-				3D1481401FE3A8E300344ADF /* LaunchScreen.storyboard */,
+				F980474F2044504000C185F1 /* LaunchScreen.storyboard */,
 				3D1481431FE3A8E300344ADF /* Info.plist */,
 			);
 			path = AccountApp;
@@ -439,9 +437,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98047502044504000C185F1 /* LaunchScreen.storyboard in Resources */,
 				F9F98F3C20218D4A009FBC95 /* AddAccount.storyboard in Resources */,
 				F9AF4E9D2032AC1200DA437D /* IntervalSwitchView.xib in Resources */,
-				3D1481421FE3A8E300344ADF /* LaunchScreen.storyboard in Resources */,
 				3D92A99B1FE3B0F8008D4EEF /* Localizable.strings in Resources */,
 				865947761FEB504B00B3D868 /* CalculatorView.xib in Resources */,
 				3D14813D1FE3A8E300344ADF /* Main.storyboard in Resources */,
@@ -575,16 +573,6 @@
 				3D92A9991FE3B0DB008D4EEF /* ja */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3D1481401FE3A8E300344ADF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D1481411FE3A8E300344ADF /* Base */,
-				3D92A9951FE3B07B008D4EEF /* zh-Hant */,
-				3D92A99A1FE3B0DB008D4EEF /* ja */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		3D92A99D1FE3B0F8008D4EEF /* Localizable.strings */ = {
@@ -726,6 +714,7 @@
 			baseConfigurationReference = FD09D4AF3C2550C6AA68C756 /* Pods-AccountApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AccountLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YL95KDQ6V;
 				INFOPLIST_FILE = AccountApp/Info.plist;
@@ -734,7 +723,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -743,6 +732,7 @@
 			baseConfigurationReference = 28BDD904DF254C2992BF9392 /* Pods-AccountApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AccountLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YL95KDQ6V;
 				INFOPLIST_FILE = AccountApp/Info.plist;
@@ -751,7 +741,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -819,6 +809,7 @@
 			baseConfigurationReference = 54EDF310C463A30E471F39C5 /* Pods-AccountApp.releasetest.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = AccountLaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4YL95KDQ6V;
 				INFOPLIST_FILE = AccountApp/Info.plist;
@@ -827,7 +818,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = ReleaseTest;
 		};
