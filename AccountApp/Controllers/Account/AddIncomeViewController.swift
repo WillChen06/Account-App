@@ -49,7 +49,7 @@ class AddIncomeViewController: UIViewController {
     }()
     
     lazy var accountTypeView: UIView = {
-        let typeView = UIView(frame: CGRect(x: 0.0, y: view.frame.size.height, width: view.frame.size.width, height: 217.0 + 44.0))
+        let typeView = UIView(frame: CGRect(x: 0.0, y: view.frame.size.height + 34.0, width: view.frame.size.width, height: 217.0 + 44.0))
         typeView.backgroundColor = .white
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 44.0))
         let doneButton = UIBarButtonItem(title: .done, style: .plain, target: self, action: #selector(hidePickerView))
@@ -63,7 +63,7 @@ class AddIncomeViewController: UIViewController {
         return typeView
     }()
     lazy var calculatorView: CalculatorView = {
-        let calculatorView = CalculatorView(frame: CGRect(x: 0.0, y: view.frame.size.height, width: view.frame.size.width, height: view.frame.size.height * 0.75))
+        let calculatorView = CalculatorView(frame: CGRect(x: 0.0, y: view.frame.size.height + 34.0, width: view.frame.size.width, height: view.frame.size.height * 0.75))
         calculatorView.delegate = self
         return calculatorView
     }()
@@ -176,7 +176,7 @@ class AddIncomeViewController: UIViewController {
         let cellRect = amountButton.frame
         isShowCalculatorView = false
         UIView.animate(withDuration: 0.5) {
-            self.calculatorView.frame = CGRect(x: 0.0, y: self.view.frame.size.height, width: self.view.frame.size.width, height: (self.view.frame.size.height - (cellRect.origin.y + cellRect.size.height)))
+            self.calculatorView.frame = CGRect(x: 0.0, y: self.view.frame.size.height + 34.0, width: self.view.frame.size.width, height: (self.view.frame.size.height - (cellRect.origin.y + cellRect.size.height)))
         }
     }
     
@@ -194,7 +194,7 @@ class AddIncomeViewController: UIViewController {
     
     @objc func hidePickerView() {
         UIView.animate(withDuration: 0.5) {
-            self.accountTypeView.frame = CGRect(x: 0.0, y: self.view.frame.size.height, width: self.view.frame.size.width, height: 217.0 + 44.0)
+            self.accountTypeView.frame = CGRect(x: 0.0, y: self.view.frame.size.height + 34.0, width: self.view.frame.size.width, height: 217.0 + 44.0)
         }
     }
     
