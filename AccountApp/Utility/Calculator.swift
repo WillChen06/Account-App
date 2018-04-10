@@ -37,30 +37,41 @@ class Calculator {
     // MARK: - Calculator Operation
     
     public func input(_ input: String?) throws {
-        guard display.count < 10 || (input?.isClear)! else {
-            throw CalculatorError.overInput
-        }
-        
+
         guard let input = input else {
             throw CalculatorError.nilInput
         }
         
-        guard input.isValidCharacter else {
+        guard input.count == 1 || input.isOkSign else {
+            throw CalculatorError.multipleCharacters
+        }
+        
+        guard input.isValidCharacter || input.isOkSign else {
             throw CalculatorError.invalidCharater
         }
         
-        // FIXME: Fix input zero bug
-        if input.isValidDigit || input.isDoubleZero {
-            if isLastCharacterOperator && (input == "0" || input == "00") { return }
+        guard display.count < 10 || input.isClear else {
+            throw CalculatorError.overInput
+        }
+        
+        if input.isValidDigit {
             if isLastCharacterOperator {
-                display = input
-                isLastCharacterOperator = false
+                if input != "." {
+                    display = input
+                    isLastCharacterOperator = false
+                }
             }
-            else if !input.isPeriod || !(display.contains(period)) {
-                // Add it to the current display.
+            else if display == "0" && input != "." {
+                display = input
+            }
+            else if display.contains(period) && input == "." {
+                return
+            }
+            else {
                 display += input
             }
         } else if input.isOperator {
+            
             if (operatorValue == nil) {
                 NotificationCenter.default.post(name: .changeToEqual, object: nil)
                 leftOperand = Double(displayValue)
@@ -70,6 +81,12 @@ class Calculator {
         } else if input.isEqualSign {
             NotificationCenter.default.post(name: .changeToOk, object: nil)
             if let sign = operatorValue, let operand = leftOperand, let rightOperand = Double(displayValue) {
+                if sign == "/" && rightOperand == 0 {
+                    display = .calculateNaN
+                    operatorValue = nil
+                    isLastCharacterOperator = true
+                    return
+                }
                 if let result = operation(left: operand, right: rightOperand, sign: sign) {
                     display = "\(String(format: "%g", result))"
                 }

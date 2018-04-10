@@ -25,6 +25,7 @@
 "Delete" = "Delete";
 "DeleteAlert" = "Are you sure want to delete the data?";
 "Total" = "Total";
+"CalculateNaN" = "Error";
 
 // MARK: - Account
 "Income" = "Income";

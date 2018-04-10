@@ -16,7 +16,7 @@ class CalculatorView: UIView {
     @IBOutlet weak var mutiplyButton: UIButton!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var additionButton: UIButton!
-    @IBOutlet weak var hundredButton: UIButton!
+//    @IBOutlet weak var hundredButton: UIButton!
     @IBOutlet weak var decimalButton: UIButton!
     @IBOutlet weak var equlButton: UIButton!
     @IBOutlet weak var number0: UIButton!
@@ -47,7 +47,7 @@ class CalculatorView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        let buttons: [UIButton] = [number0, number1, number2, number3, number4, number5, number6, number7, number8, number9, equlButton, clearButton, divideButton, mutiplyButton, minusButton, additionButton, hundredButton, decimalButton]
+        let buttons: [UIButton] = [number0, number1, number2, number3, number4, number5, number6, number7, number8, number9, equlButton, clearButton, divideButton, mutiplyButton, minusButton, additionButton, decimalButton]
         for button in buttons {
             button.addTarget(self, action: #selector(inputAmount(_:)), for: .touchUpInside)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30.0)
@@ -62,14 +62,6 @@ class CalculatorView: UIView {
     }
 
     @objc func changeToEqual() {
-//        switch (equlButton.titleLabel?.text)! {
-//        case "OK":
-//            equlButton.setTitle("=", for: .normal)
-//        case "=":
-//            equlButton.setTitle("OK", for: .normal)
-//        default:
-//            break
-//        }
         equlButton.setTitle("=", for: .normal)
     }
     

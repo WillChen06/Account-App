@@ -25,6 +25,7 @@
 "Delete" = "削除";
 "DeleteAlert" = "このデータを削除してもよろしいでしょうか?";
 "Total" = "合計";
+"CalculateNaN" = "エラー";
 
 // MARK: - Account
 "Income" = "収入";

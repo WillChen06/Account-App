@@ -28,6 +28,7 @@ extension String {
     static let delete = NSLocalizedString("Delete", comment: "")
     static let deleteAlert = NSLocalizedString("DeleteAlert", comment: "");
     static let total = NSLocalizedString("Total", comment: "")
+    static let calculateNaN = NSLocalizedString("CalculateNaN", comment: "")
 }
 
 // MARK: - Account

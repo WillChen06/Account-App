@@ -8,6 +8,10 @@ target 'AccountApp' do
   # Pods for AccountApp
   pod 'RealmSwift'
   pod 'JTAppleCalendar', '~> 7.0'
-  pod 'IQKeyboardManagerSwift'
   pod 'Charts'
+end
+
+target 'AccountAppTests' do
+  use_frameworks!
+  pod 'RealmSwift'
 end

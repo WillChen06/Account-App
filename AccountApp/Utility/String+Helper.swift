@@ -41,10 +41,6 @@ extension String {
         return digits.contains(self)
     }
     
-    var isDoubleZero: Bool {
-        return (self == "00")
-    }
-    
     /// Determines whether the string is an operator such as +, -, *, or /.
     var isOperator: Bool {
         let operators = "+-x/"
@@ -62,6 +58,6 @@ extension String {
     
     /// Determines whether a string is a valid character such as a digit, a.
     var isValidCharacter: Bool {
-        return ( isValidDigit || isDoubleZero || isOperator || isDelete || isClear || isPeriod || isEqualSign || isOkSign)
+        return ( isValidDigit || isOperator || isDelete || isClear || isPeriod || isEqualSign || isOkSign)
     }
 }

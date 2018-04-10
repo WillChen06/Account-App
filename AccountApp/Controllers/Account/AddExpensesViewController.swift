@@ -488,7 +488,7 @@ extension AddExpensesViewController: AddAccountViewControllerDelegate {
     func inputAmount(_ sender: UIButton) {
         if let label = sender.titleLabel?.text {
             do {
-                if amountButton.titleLabel?.text == "0" && (label == "0" || label == "00") {return}
+//                if amountButton.titleLabel?.text == "0" && (label == "0" || label == "00") {return}
                 try calculator.input(label)
                 amountButton.setTitle(calculator.displayValue, for: .normal)
             } catch let error {
