@@ -28,6 +28,7 @@
 "DeleteAlert" = "確定要刪除此筆資料?";
 "Total" = "總和";
 "CalculateNaN" = "錯誤";
+"DataNotFound" = "查無資料";
 
 // MARK: - Account
 "Income" = "收入";

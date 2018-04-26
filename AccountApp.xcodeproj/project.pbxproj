@@ -31,6 +31,7 @@
 		AF554C55D311462CCF2BCE7D /* Pods_AccountApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7B33036387CEC868465150 /* Pods_AccountApp.framework */; };
 		F900EB91200C9A9600A7A126 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F900EB90200C9A9600A7A126 /* Calculator.swift */; };
 		F90202142026FCF5000F88A0 /* AccountDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */; };
+		F9045E70208DDADD00041495 /* CustomChartViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9045E6F208DDADD00041495 /* CustomChartViews.swift */; };
 		F906F7852042E674007DCEE1 /* LocalNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7842042E674007DCEE1 /* LocalNotificationViewController.swift */; };
 		F906F7872042E67D007DCEE1 /* VersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7862042E67D007DCEE1 /* VersionViewController.swift */; };
 		F906F78A2042E6A2007DCEE1 /* LocalNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F906F7892042E6A2007DCEE1 /* LocalNotificationCell.swift */; };
@@ -47,6 +48,7 @@
 		F96BEB3520440515006BB471 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F96BEB3720440515006BB471 /* InfoPlist.strings */; };
 		F96E5627203FE09A008E6D56 /* ListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96E5626203FE09A008E6D56 /* ListSectionView.swift */; };
 		F9756510203EF6F20067D56A /* SumDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F975650F203EF6F20067D56A /* SumDisplayView.swift */; };
+		F97865232089D08F008C4EA0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97865222089D08F008C4EA0 /* EmptyView.swift */; };
 		F98047502044504000C185F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F980474F2044504000C185F1 /* LaunchScreen.storyboard */; };
 		F9AF4E932031EFDA00DA437D /* TypeSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */; };
 		F9AF4E952031EFE900DA437D /* TypeSwitchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */; };
@@ -113,6 +115,7 @@
 		F19155A9706345CDD9931139 /* Pods-AccountApp.releasetest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountApp.releasetest.xcconfig"; path = "Pods/Target Support Files/Pods-AccountApp/Pods-AccountApp.releasetest.xcconfig"; sourceTree = "<group>"; };
 		F900EB90200C9A9600A7A126 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		F90202132026FCF5000F88A0 /* AccountDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDisplayCell.swift; sourceTree = "<group>"; };
+		F9045E6F208DDADD00041495 /* CustomChartViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartViews.swift; sourceTree = "<group>"; };
 		F906F7842042E674007DCEE1 /* LocalNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationViewController.swift; sourceTree = "<group>"; };
 		F906F7862042E67D007DCEE1 /* VersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionViewController.swift; sourceTree = "<group>"; };
 		F906F7892042E6A2007DCEE1 /* LocalNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationCell.swift; sourceTree = "<group>"; };
@@ -131,6 +134,7 @@
 		F96BEB3920440518006BB471 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F96E5626203FE09A008E6D56 /* ListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSectionView.swift; sourceTree = "<group>"; };
 		F975650F203EF6F20067D56A /* SumDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumDisplayView.swift; sourceTree = "<group>"; };
+		F97865222089D08F008C4EA0 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		F980474F2044504000C185F1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9AF4E922031EFDA00DA437D /* TypeSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSwitchView.swift; sourceTree = "<group>"; };
 		F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeSwitchView.xib; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 				F9AF4E942031EFE900DA437D /* TypeSwitchView.xib */,
 				F9AF4E9A2032AC0B00DA437D /* IntervalSwitchView.swift */,
 				F9AF4E9C2032AC1100DA437D /* IntervalSwitchView.xib */,
+				F97865222089D08F008C4EA0 /* EmptyView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				F9070B442039569D00E04A87 /* ChartListCell.swift */,
+				F9045E6F208DDADD00041495 /* CustomChartViews.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -687,7 +693,9 @@
 				F9070B452039569D00E04A87 /* ChartListCell.swift in Sources */,
 				F90DAC4B202EE3E40018E4E8 /* IncomeCell.swift in Sources */,
 				F96B40342031EDA20090D308 /* ListViewController.swift in Sources */,
+				F9045E70208DDADD00041495 /* CustomChartViews.swift in Sources */,
 				F906F7902042F107007DCEE1 /* ClearDataCell.swift in Sources */,
+				F97865232089D08F008C4EA0 /* EmptyView.swift in Sources */,
 				F9F98F4020218EFC009FBC95 /* AddExpensesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -867,7 +875,7 @@
 				INFOPLIST_FILE = AccountApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -885,7 +893,7 @@
 				INFOPLIST_FILE = AccountApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -962,7 +970,7 @@
 				INFOPLIST_FILE = AccountApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.willchen.AccountApp1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

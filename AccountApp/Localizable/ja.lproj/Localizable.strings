@@ -26,6 +26,7 @@
 "DeleteAlert" = "このデータを削除してもよろしいでしょうか?";
 "Total" = "合計";
 "CalculateNaN" = "エラー";
+"DataNotFound" = "データが見つかりません";
 
 // MARK: - Account
 "Income" = "収入";

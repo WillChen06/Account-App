@@ -32,31 +32,17 @@ class ChartViewController: UIViewController {
         return label
     }()
     
-    lazy var chartScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: view.frame.size.width * 2, height: 0.0)
-        scrollView.isPagingEnabled = true
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        return scrollView
+    lazy var chartScrollView: CustomChartViews = {
+        let chartViews = CustomChartViews()
+        chartViews.translatesAutoresizingMaskIntoConstraints = false
+        chartViews.delegate = self
+        chartViews.contentSize = CGSize(width: view.frame.size.width * 3, height: 0.0)
+        chartViews.isPagingEnabled = true
+        chartViews.showsHorizontalScrollIndicator = false
+        chartViews.showsVerticalScrollIndicator = false
+        return chartViews
     }()
-    
-    lazy var chartView: PieChartView = {
-        let chartView = PieChartView()
-        chartView.translatesAutoresizingMaskIntoConstraints = false
-        chartView.legend.enabled = false
-        return chartView
-    }()
-    
-    lazy var incomeChartView: PieChartView = {
-        let chartView = PieChartView()
-        chartView.translatesAutoresizingMaskIntoConstraints = false
-        chartView.legend.enabled = false
-        return chartView
-    }()
-    
+
     lazy var listTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,17 +54,16 @@ class ChartViewController: UIViewController {
         return tableView
     }()
     
+    var position: CGFloat {
+        let position = round(chartScrollView.contentOffset.x / chartScrollView.frame.size.width)
+        guard !position.isNaN else {
+            return 0
+        }
+        return position
+    }
+    
     var currentType: Interval = .day
-    var showExpense: Bool = true
     var chartDictionary: [String : Int] = [:]
-    var colorsData: [UIColor] = {
-        return ChartColorTemplates.vordiplom()
-            + ChartColorTemplates.joyful()
-            + ChartColorTemplates.colorful()
-            + ChartColorTemplates.liberty()
-            + ChartColorTemplates.pastel()
-            + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
-    }()
     var accounts: Results<Account>? = {
         return RealmHelper.objects(Account.self)
     }()
@@ -99,10 +84,15 @@ class ChartViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if showExpense {
-            setupChartView(chartView: chartView, by: currentType)
-        } else {
-            setupIncomeChartView(chartView: incomeChartView, by: currentType)
+        switch position {
+        case 0:
+            setupChartView(category: "Expense", by: currentType)
+        case 1:
+            setupChartView(category: "Income", by: currentType)
+        case 2:
+            print("Total Display")
+        default:
+            break
         }
     }
     // MARK: - Setup
@@ -111,8 +101,6 @@ class ChartViewController: UIViewController {
         view.addSubview(displayDateLabel)
         view.addSubview(chartScrollView)
         view.addSubview(listTableView)
-        chartScrollView.addSubview(chartView)
-        chartScrollView.addSubview(incomeChartView)
         displayDateLabel.text = getDateOfInterval(.day)
         if #available(iOS 11, *) {
             intervalSwitchView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
@@ -122,96 +110,22 @@ class ChartViewController: UIViewController {
         
         displayDateLabel.anchor(top: intervalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         chartScrollView.anchor(top: displayDateLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
-        chartView.anchor(top: chartScrollView.topAnchor, left: chartScrollView.leftAnchor, bottom: nil, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
-        chartView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
-        chartView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
-        incomeChartView.frame.origin.x = view.frame.size.width
-        incomeChartView.anchor(top: chartScrollView.topAnchor, left: chartView.rightAnchor, bottom: nil, right: nil, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
-        incomeChartView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
-        incomeChartView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
         
         listTableView.anchor(top: chartScrollView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 0.0)
         listTableView.heightAnchor.constraint(equalTo: chartScrollView.heightAnchor, multiplier: 0.4).isActive = true
+
     }
     private func setupNavigation() {
         navigationItem.title = .expenses
         navigationController?.navigationBar.applyGradient(colors: [.brightCyan, .softBlue])
     }
     
-    private func setupChartView(chartView: PieChartView, by interval: Interval) {
-        let data = getSumOfAccounts(type: "Expense", by: interval)
-        setup(pieChartView: chartView)
-        chartView.delegate = self
-        chartView.entryLabelColor = .white
-        chartView.entryLabelFont = UIFont.systemFont(ofSize: 12.0)
-        setDataCount(data, isExpense: true)
-        chartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
+    private func setupChartView(category: String, by interval: Interval) {
+        let data = getSumOfAccounts(type: category, by: interval)
+        chartScrollView.setupChartView(in: category)
+        chartScrollView.setData(data, in: category)
         listTableView.reloadData()
-    }
     
-    private func setupIncomeChartView(chartView: PieChartView, by interval: Interval) {
-        let data = getSumOfAccounts(type: "Income", by: interval)
-        setup(pieChartView: incomeChartView)
-        chartView.delegate = self
-        chartView.entryLabelColor = .white
-        chartView.entryLabelFont = UIFont.systemFont(ofSize: 12.0)
-        setDataCount(data, isExpense: false)
-        chartView.animate(xAxisDuration: 1.0, easingOption: .easeOutBack)
-        listTableView.reloadData()
-    }
-    
-    func setDataCount(_ data: [String : Int], isExpense: Bool) {
-        
-        let entries = (0..<data.count).map { (i) -> PieChartDataEntry in
-            // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.
-            return PieChartDataEntry(value: Double(Array(data)[i].value),
-                                     label: nil,
-                                     icon: nil)
-        }
-        let set = PieChartDataSet(values: entries, label: "Election Results")
-        set.drawIconsEnabled = false
-        set.sliceSpace = 2
-        set.colors = colorsData
-        set.drawValuesEnabled = false
-        let data = PieChartData(dataSet: set)
-        if isExpense {
-            chartView.data = data
-            chartView.highlightValues(nil)
-        } else {
-            incomeChartView.data = data
-            incomeChartView.highlightValues(nil)
-        }
-        
-    }
-    func setup(pieChartView chartView: PieChartView) {
-        chartView.usePercentValuesEnabled = true
-        chartView.drawSlicesUnderHoleEnabled = false
-        chartView.holeRadiusPercent = 0.6
-        //        chartView.transparentCircleRadiusPercent = 0.61
-        chartView.chartDescription?.enabled = false
-        chartView.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
-        
-        let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
-        paragraphStyle.lineBreakMode = .byTruncatingTail
-        paragraphStyle.alignment = .center
-        let centerText: NSMutableAttributedString
-        if showExpense {
-            centerText = NSMutableAttributedString(string: .expenses + "\n" + String(describing: total))
-        } else {
-            centerText = NSMutableAttributedString(string: .income + "\n" + String(describing: total))
-        }
-        centerText.setAttributes([.font : UIFont.systemFont(ofSize: 17.0),
-                                  .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
-        //        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-        //                                  .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
-        //        centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
-        //                                  .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
-        chartView.centerAttributedText = centerText;
-        
-        chartView.drawHoleEnabled = true
-        chartView.rotationAngle = 270
-        chartView.rotationEnabled = true
-        chartView.highlightPerTapEnabled = true
     }
     
     // MARK: - Actions
@@ -222,10 +136,13 @@ class ChartViewController: UIViewController {
                 self.currentType = .year
                 self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.yearButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.year)
-                if self.showExpense {
-                    self.setupChartView(chartView: self.chartView, by: .year)
-                } else {
-                    self.setupIncomeChartView(chartView: self.incomeChartView, by: .year)
+                switch self.position {
+                case 0:
+                    self.setupChartView(category: "Expense", by: .year)
+                case 1:
+                    self.setupChartView(category: "Income", by: .year)
+                default:
+                    break
                 }
             })
         }
@@ -237,10 +154,13 @@ class ChartViewController: UIViewController {
                 self.currentType = .month
                 self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.monthButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.month)
-                if self.showExpense {
-                    self.setupChartView(chartView: self.chartView, by: .month)
-                } else {
-                    self.setupIncomeChartView(chartView: self.incomeChartView, by: .month)
+                switch self.position {
+                case 0:
+                    self.setupChartView(category: "Expense", by: .month)
+                case 1:
+                    self.setupChartView(category: "Income", by: .month)
+                default:
+                    break
                 }
             })
         }
@@ -252,10 +172,13 @@ class ChartViewController: UIViewController {
                 self.currentType = .week
                 self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.weekButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.week)
-                if self.showExpense {
-                    self.setupChartView(chartView: self.chartView, by: .week)
-                } else {
-                    self.setupIncomeChartView(chartView: self.incomeChartView, by: .week)
+                switch self.position {
+                case 0:
+                    self.setupChartView(category: "Expense", by: .week)
+                case 1:
+                    self.setupChartView(category: "Income", by: .week)
+                default:
+                    break
                 }
             })
         }
@@ -267,10 +190,13 @@ class ChartViewController: UIViewController {
                 self.currentType = .day
                 self.intervalSwitchView.currentView.frame.origin.x = self.intervalSwitchView.dayButton.frame.origin.x
                 self.displayDateLabel.text = self.getDateOfInterval(.day)
-                if self.showExpense {
-                    self.setupChartView(chartView: self.chartView, by: .day)
-                } else {
-                    self.setupIncomeChartView(chartView: self.incomeChartView, by: .day)
+                switch self.position {
+                case 0:
+                    self.setupChartView(category: "Expense", by: .day)
+                case 1:
+                    self.setupChartView(category: "Income", by: .day)
+                default:
+                    break
                 }
             })
         }
@@ -330,40 +256,22 @@ class ChartViewController: UIViewController {
         })
         return chartDictionary
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
-
-// MARK: - Chart protocol
-extension ChartViewController: ChartViewDelegate {
-    
 }
 
 // MARK: - ScrollView protocol
 extension ChartViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let position = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-        if Int(position) == 0 && !showExpense {
-            DispatchQueue.main.async {
-                self.navigationItem.title = .expenses
-                self.setupChartView(chartView: self.chartView, by: self.currentType)
-            }
-            showExpense = true
-        } else if Int(position) == 1 && showExpense {
-            DispatchQueue.main.async {
-                self.navigationItem.title = .income
-                self.setupIncomeChartView(chartView: self.incomeChartView, by: self.currentType)
-            }
-            showExpense = false
+        switch position {
+        case 0:
+            self.navigationItem.title = .expenses
+            self.setupChartView(category: "Expense", by: self.currentType)
+        case 1:
+            self.navigationItem.title = .income
+            self.setupChartView(category: "Income", by: self.currentType)
+        case 2:
+            self.navigationItem.title = .total
+        default:
+            break
         }
     }
 }
@@ -378,7 +286,7 @@ extension ChartViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let amount = Double(Array(chartDictionary)[indexPath.row].value)
-        cell.typeImageView.backgroundColor = colorsData[indexPath.row]
+        cell.typeImageView.backgroundColor = CustomChartViews.colors[indexPath.row]
         cell.nameLabel.text = Array(chartDictionary)[indexPath.row].key
         cell.percentageLabel.text = (amount / Double(total)).toPercentage
         cell.amountLabel.text = String(describing: amount)

@@ -136,8 +136,6 @@ class AddExpensesViewController: UIViewController {
         view.addSubview(calculatorView)
         view.addSubview(accountTypeView)
         category = account?.category.value
-        accountType = account?.account ?? 0
-        detail = account?.detail ?? .addDescription
         amountButton.setTitle(account?.amount ?? "0", for: .normal)
         pickerView.selectRow(accountType, inComponent: 0, animated: false)
         if #available(iOS 11.0, *) {

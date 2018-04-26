@@ -36,4 +36,8 @@ extension UIColor {
     class var listSeparateBlue: UIColor {
         return UIColor(red: 1.0 / 255.0, green: 127.0 / 255.0, blue: 196.0 / 255.0, alpha: 1.0)
     }
+    class var whiteSmoke: UIColor {
+        return UIColor(red: 242.0 / 255.0, green: 242.0 / 255.0, blue: 242.0 / 255.0, alpha: 1.0)
+    }
+    
 }

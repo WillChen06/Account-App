@@ -40,11 +40,19 @@ class ListViewController: UIViewController {
         return tableView
     }()
     
+    lazy var emptyView: EmptyView = {
+        let emptyView = EmptyView()
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        emptyView.isHidden = true
+        return emptyView
+    }()
+    
     var currentType: Interval = .day
     var listData: Results<Account>?
     var accounts: Results<Account>? = {
         return RealmHelper.objects(Account.self)
     }()
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -69,6 +77,7 @@ class ListViewController: UIViewController {
         view.addSubview(intervalSwitchView)
         view.addSubview(totalDisplayView)
         view.addSubview(listTableView)
+        view.addSubview(emptyView)
         if #available(iOS 11, *) {
             intervalSwitchView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 30.0)
         } else {
@@ -77,6 +86,8 @@ class ListViewController: UIViewController {
         totalDisplayView.anchor(top: intervalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 8.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 0.0)
         totalDisplayView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1 / 3).isActive = true
         listTableView.anchor(top: totalDisplayView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0.0, leftConstant: 8.0, bottomConstant: 0.0, rightConstant: 8.0, widthConstant: 0.0, heightConstant: 0.0)
+        
+        emptyView.anchor(top: intervalSwitchView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0.0, leftConstant: 0.0, bottomConstant: 0.0, rightConstant: 0.0, widthConstant: 0.0, heightConstant: 0.0)
         
     }
     
@@ -142,23 +153,35 @@ class ListViewController: UIViewController {
         case .year:
             data = accounts?.filter("date >= %@ && date <= %@", Date().startOfYear!, Date().endOfYear!)
         }
-        listData = data
-        sumOfIncome = (data?.filter("type == %@", "Income").reduce(0, { (result, account) -> Int in
-            return result + Int(account.amount)!
-        }))!
-
-        sumOfExpenses = (data?.filter("type == %@", "Expense").reduce(0, { (result, account) -> Int in
-            return result + Int(account.amount)!
-        }))!
-        
-        total = sumOfIncome - sumOfExpenses
-        
-        DispatchQueue.main.async {
-            self.totalDisplayView.sumOfExpenseLabel.text = "$" + String(describing: sumOfExpenses)
-            self.totalDisplayView.sumOfIncomeLabel.text = "$" + String(describing: sumOfIncome)
-            self.totalDisplayView.totalLabel.text = "$" + String(describing: total)
-            self.listTableView.reloadData()
+        if data?.count != 0 {
+            listData = data
+            sumOfIncome = (data?.filter("type == %@", "Income").reduce(0, { (result, account) -> Int in
+                return result + Int(account.amount)!
+            }))!
+            
+            sumOfExpenses = (data?.filter("type == %@", "Expense").reduce(0, { (result, account) -> Int in
+                return result + Int(account.amount)!
+            }))!
+            
+            total = sumOfIncome - sumOfExpenses
+            
+            DispatchQueue.main.async {
+                self.totalDisplayView.isHidden = false
+                self.listTableView.isHidden = false
+                self.emptyView.isHidden = true
+                self.totalDisplayView.sumOfExpenseLabel.text = "$" + String(describing: sumOfExpenses)
+                self.totalDisplayView.sumOfIncomeLabel.text = "$" + String(describing: sumOfIncome)
+                self.totalDisplayView.totalLabel.text = "$" + String(describing: total)
+                self.listTableView.reloadData()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.totalDisplayView.isHidden = true
+                self.listTableView.isHidden = true
+                self.emptyView.isHidden = false
+            }
         }
+        
     }
     
     func getDateOfInterval(_ range: Interval) -> String {
